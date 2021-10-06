@@ -21,24 +21,17 @@ namespace arcade_game
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string teamname;
-        public string player1;
-        public string player2;
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            teamname = teamnaam.Text;
-            player1 = speler1.Text;
-            player2 = speler2.Text;
-            System.Diagnostics.Debug.WriteLine("teamnaam is: " + teamname);
-            System.Diagnostics.Debug.WriteLine("speler 1 is: " + player1);
-            System.Diagnostics.Debug.WriteLine("speler 2 is: " + player2);
+            StartGame game = new StartGame();
+            game.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
         }
-
-
     }
 }
