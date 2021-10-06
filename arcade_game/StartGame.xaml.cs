@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace arcade_game
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
     public partial class StartGame : Window
     {
         public string teamname;
@@ -27,7 +24,14 @@ namespace arcade_game
         {
             InitializeComponent();
         }
-///
+
+        /// <summary>
+        /// Zorgt er voor dat als je op de knop drukt, de ingevulde team/speler namen worden opgeslagen in een string.
+        /// Checkt of er iets is ingevuld, anders geeft het een foutmelding.
+        /// Als alles goed is gaat het spel verder
+        /// </summary>
+        /// <param name="sender">De knop die je moet klikken</param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             teamname = teamnaam.Text;
@@ -36,7 +40,6 @@ namespace arcade_game
             System.Diagnostics.Debug.WriteLine("teamnaam is: " + teamname);
             System.Diagnostics.Debug.WriteLine("speler 1 is: " + player1);
             System.Diagnostics.Debug.WriteLine("speler 2 is: " + player2);
-            //todo Database koppeling
             //todo check of alles is ingevuld
             //todo doorgaan naar de game
         }

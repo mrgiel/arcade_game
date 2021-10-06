@@ -27,6 +27,11 @@ namespace arcade_game
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Opent naam invul scherm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             StartGame game = new StartGame();
