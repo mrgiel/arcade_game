@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid x:Name="Game" HorizontalAlignment="Left" Width="800">
         <Grid.Background>
-            <ImageBrush ImageSource="/istockphoto-1182467404-170667a.jpg"/>
+            <ImageBrush ImageSource="/Image/istockphoto-1182467404-170667a.jpg"/>
         </Grid.Background>
         <Label HorizontalContentAlignment="Left">
             <Label Content="Arcade" Width="790" Height="166" FontSize="100" FontFamily="Impact" FontWeight="Bold" FontStyle="Normal" Foreground="White" FontStretch="Normal" BorderThickness="0,0,0,0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" RenderTransformOrigin="0.5,0.5"/>

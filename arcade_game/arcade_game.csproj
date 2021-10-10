@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <Resource Include="Image\istockphoto-1182467404-170667a.jpg" />
+    <Resource Include="istockphoto-1182467404-170667a.jpg" />
   </ItemGroup>
 
 </Project>
