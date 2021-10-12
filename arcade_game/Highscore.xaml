@@ -29,9 +29,7 @@
         <Label Content="7th" HorizontalAlignment="Left" Margin="123,342,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="24" FontWeight="Bold"/>
         <Label Content="8th" HorizontalAlignment="Left" Margin="123,381,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontWeight="Bold" FontSize="24" RenderTransformOrigin="0.37,0.602"/>
         <Button Content="Opties" HorizontalAlignment="Left" Margin="737,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.307,0.647" Height="63" Width="55" Foreground="White" FontFamily="Impact" FontWeight="Bold" FontSize="16" BorderThickness="3,3,3,3" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="/images.png"/>
-            </Button.Background>
+            
         </Button>
         <Button Content="Terug" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontWeight="Bold" FontSize="16" BorderBrush="White" BorderThickness="3,3,3,3" Height="63" Width="55">
             <Button.Background>
