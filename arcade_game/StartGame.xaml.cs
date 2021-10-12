@@ -49,5 +49,10 @@ namespace arcade_game
 
 
         }
+
+        private void teamnaam_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

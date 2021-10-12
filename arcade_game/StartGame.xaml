@@ -16,7 +16,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Label
-            Content="Arcade Game" FontSize="100" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+            Content="Arcade Game" FontSize="100" HorizontalAlignment="Center" VerticalContentAlignment="Center" Foreground="White" FontFamily="Impact" FontWeight="Bold"/>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -30,7 +30,7 @@
                      BorderThickness="1" FontSize="25"
                      TextAlignment="Center" 
                      Margin="100,0,100,0"
-                     VerticalContentAlignment="Center"
+                     VerticalContentAlignment="Center" TextChanged="teamnaam_TextChanged"
                        />
             <TextBlock x:Name="Placeholder" IsHitTestVisible="False" TextWrapping="Wrap" Text="Teamnaam:..." VerticalAlignment="Center" Foreground="DarkGray" HorizontalAlignment="Center">
                 <TextBlock.Style>
@@ -53,18 +53,16 @@
                  Grid.Column="0"
                      x:Name="speler1"
                      TextWrapping="Wrap"
-                     BorderBrush="Black"
-                     BorderThickness="1" FontSize="25"
+                     BorderBrush="White"
+                     BorderThickness="8,3,8,3" FontSize="25"
                      TextAlignment="Center" 
-                     HorizontalAlignment="Stretch" 
-                     Margin="100,50,100,0"
+                     Margin="100,36,100,0"
                      VerticalContentAlignment="Center"
                     Text=""
                     
                        />
-                <TextBlock x:Name="Placeholder2" IsHitTestVisible="False" TextWrapping="Wrap" Text="Speler 1:..." Foreground="DarkGray" TextAlignment="Center" VerticalAlignment="Center"
-                     HorizontalAlignment="Stretch" 
-                     Margin="100,50,100,0"
+                <TextBlock x:Name="Placeholder2" IsHitTestVisible="False" TextWrapping="Wrap" Text="Speler 1:..." Foreground="DarkGray" TextAlignment="Center" VerticalAlignment="Top" 
+                     Margin="102,44,102,0" Height="22"
                      >
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
@@ -81,14 +79,14 @@
                  Grid.Column="1"
                      x:Name="speler2"
                      TextWrapping="Wrap"
-                     BorderBrush="Black"
-                     BorderThickness="1" FontSize="25"
+                     BorderBrush="White"
+                     BorderThickness="8,3,8,3" FontSize="25"
                      TextAlignment="Center" 
-                     Margin="100,50,100,0"
+                     Margin="100,36,100,0"
                      VerticalContentAlignment="Center"
                        />
                 <TextBlock x:Name="Placeholder3" IsHitTestVisible="False" TextWrapping="Wrap" Text="Speler 2:..." Foreground="DarkGray" TextAlignment="Center" 
-                     Margin="100,53,100,-4" Grid.Column="1" VerticalAlignment="Center"
+                     Margin="102,44,102,0" Grid.Column="1" VerticalAlignment="Top" Height="22"
                      
                      >
                     <TextBlock.Style>
@@ -105,7 +103,23 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="2">
-            <Button HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" Height="100" Margin="0,50,0,0" Click="Button_Click">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="72" Click="Button_Click" Content="Spelen" BorderBrush="White" BorderThickness="4,3,4,3" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold">
+                <Button.Background>
+                    <ImageBrush/>
+                </Button.Background>
+            </Button>
+            <Button Content="Terug" HorizontalAlignment="Left" Margin="125,0,0,0" VerticalAlignment="Center" BorderBrush="White" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" FontFamily="Impact" Foreground="White" Width="130" Height="72">
+                <Button.Background>
+                    <ImageBrush/>
+                </Button.Background>
+            </Button>
+            <Button Content="Opties" HorizontalAlignment="Left" Margin="545,0,0,0" VerticalAlignment="Center" BorderBrush="White" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" FontFamily="Impact" Foreground="White" Height="72" Width="128">
+                <Button.Background>
+                    <ImageBrush/>
+                </Button.Background>
             </Button>
         </Grid>
     </Grid>
