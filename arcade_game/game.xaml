@@ -1,0 +1,31 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="500">
+    <Canvas x:Name="game" KeyDown="game_KeyDown" KeyUp="game_KeyUp" Focusable="True">
+        
+        <Rectangle x:Name="Player1"
+                   Fill="Blue"
+                   Tag="player"
+                   Height="50"
+                   Width="50"
+                   Canvas.Left="314"
+                   Canvas.Top="225"/>
+        <Rectangle x:Name="Player2"
+                   Fill="red"
+                   Tag="player"
+                   Height="50"
+                   Width="50"
+                   Canvas.Left="398"
+                   Canvas.Top="225" RenderTransformOrigin="0.457,0.503"/>
+        <Rectangle x:Name="platoform1" Tag="platform" Fill="Black" Height="50" Width="300" Canvas.Left="189" Canvas.Top="464"/>
+        <Rectangle x:Name="platoform2" Tag="platform" Fill="Black" Height="52" Width="300" Canvas.Left="14" Canvas.Top="592"/>
+        <Rectangle x:Name="platoform3" Tag="platform" Fill="Black" Height="50" Width="300" Canvas.Left="189" Canvas.Top="702"/>
+
+    </Canvas>
+</Window>
+
