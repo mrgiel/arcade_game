@@ -19,7 +19,7 @@ namespace WpfApp1
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Game : Window
     {
         private bool moveUp2 = false, moveLeft2 = false, moveRight2 = false;
         private bool moveUp1 = false, moveLeft1 = false, moveRight1 = false;
@@ -63,7 +63,7 @@ namespace WpfApp1
                 moveUp2 = false;
         }
 
-        public MainWindow()
+        public Game()
         {
             InitializeComponent();
             gameTimer.Interval = TimeSpan.FromMilliseconds(20);

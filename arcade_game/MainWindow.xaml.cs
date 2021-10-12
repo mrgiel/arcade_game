@@ -34,8 +34,8 @@ namespace arcade_game
         /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            StartGame game = new StartGame();
-            game.Visibility = Visibility.Visible;
+            StartGame startGame = new StartGame();
+            startGame.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
         }
 

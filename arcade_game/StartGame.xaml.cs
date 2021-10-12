@@ -42,6 +42,12 @@ namespace arcade_game
             System.Diagnostics.Debug.WriteLine("speler 2 is: " + player2);
             //todo check of alles is ingevuld
             //todo doorgaan naar de game
+
+            WpfApp1.Game game = new WpfApp1.Game();
+            game.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
+
+
         }
     }
 }
