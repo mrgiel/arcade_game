@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "arcade_game": {
+      "commandName": "Project"
+    }
+  }
+}
