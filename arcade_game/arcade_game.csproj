@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <None Remove="Image\istockphoto-1182467404-170667a.jpg" />
+    <None Remove="istockphoto-1182467404-170667a.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\istockphoto-1182467404-170667a.jpg" />
+    <Resource Include="istockphoto-1182467404-170667a.jpg" />
   </ItemGroup>
 
 </Project>
