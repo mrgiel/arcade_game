@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +23,10 @@ namespace WpfApp1
     /// </summary>
     public partial class Game : Window
     {
+        public string teamname { get; set; }
+        public string player1 { get; set; }
+        public string player2 { get; set; }
+        public int highscore { get; set; }
         private bool moveUp2 = false, moveLeft2 = false, moveRight2 = false;
         private bool moveUp1 = false, moveLeft1 = false, moveRight1 = false;
 
@@ -63,14 +69,18 @@ namespace WpfApp1
                 moveUp2 = false;
         }
 
-        public Game()
+        public Game(int highscore, string teamname, string player1, string player2)
         {
+            this.highscore = highscore;
+            this.teamname = teamname;
+            this.player1 = player1;
+            this.player2 = player2;
             InitializeComponent();
             gameTimer.Interval = TimeSpan.FromMilliseconds(20);
             gameTimer.Tick += GameEngine;
             gameTimer.Start();
-
             game.Focus();
+            AddHighscoreToDatabase(highscore, teamname, player1, player2);
         }
 
         private void GameEngine(object sender, EventArgs e)
@@ -121,6 +131,29 @@ namespace WpfApp1
                         Gravity2 = true;
                     }
                 }
+            }
+        }
+        private void AddHighscoreToDatabase(int highscore, string teamname, string player1, string player2)
+        {
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\gbuss\\Source\\Repos\\mrgiel\\arcade_game\\arcade_game\\Data\\Database1.mdf\";Integrated Security=True";
+            string query = "INSERT INTO [Game] ([Teamnaam],[Speler1],[Speler2],[Highscore]) VALUES ('"+teamname+"', '"+player1+ "','" + player2 + "','" + highscore + "')";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand();
+            try
+            {
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+                MessageBox.Show("gelukt");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                connection.Close();
             }
         }
     }
