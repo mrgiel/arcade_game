@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Game" Height="800" Width="500">
+        Title="Game" Height="800" Width="500" Closing="QuitGame">
     <Canvas x:Name="game" KeyDown="game_KeyDown" KeyUp="game_KeyUp" Focusable="True">
         
         <Rectangle x:Name="Player1"

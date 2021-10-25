@@ -19,6 +19,7 @@ namespace arcade_game
         public string teamname;
         public string player1;
         public string player2;
+        public int highscore;
 
         public StartGame()
         {
@@ -37,17 +38,53 @@ namespace arcade_game
             teamname = teamnaam.Text;
             player1 = speler1.Text;
             player2 = speler2.Text;
-            System.Diagnostics.Debug.WriteLine("teamnaam is: " + teamname);
-            System.Diagnostics.Debug.WriteLine("speler 1 is: " + player1);
-            System.Diagnostics.Debug.WriteLine("speler 2 is: " + player2);
-            //todo check of alles is ingevuld
-            //todo doorgaan naar de game
 
-            WpfApp1.Game game = new WpfApp1.Game();
-            game.Visibility = Visibility.Visible;
+            //System.Diagnostics.Debug.WriteLine("teamnaam is: " + teamname);
+            //System.Diagnostics.Debug.WriteLine("speler 1 is: " + player1);
+            //System.Diagnostics.Debug.WriteLine("speler 2 is: " + player2);
+
+            if (string.IsNullOrEmpty(teamname) || string.IsNullOrEmpty(player1) || string.IsNullOrEmpty(player2))
+            {
+                MessageBox.Show("Vul alle velden in!");
+            } else
+            {
+                WpfApp1.Game game = new WpfApp1.Game(highscore, teamname, player1, player2);
+                game.Visibility = Visibility.Visible;
+                this.Visibility = Visibility.Hidden;
+            }
+        }
+        /// <summary>
+        /// Sluit het spel helemaal af
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void QuitGame(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        /// <summary>
+        /// gaat terug naar het startscherm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
+        }
 
-
+        /// <summary>
+        /// Gaat naar de options
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Window1 options = new Window1();
+            options.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
         }
     }
 }

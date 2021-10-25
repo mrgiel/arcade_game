@@ -23,5 +23,17 @@ namespace arcade_game
         {
             InitializeComponent();
         }
+
+        private void QuitGame(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
+        }
     }
 }
