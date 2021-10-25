@@ -15,13 +15,23 @@ using System.Windows.Shapes;
 namespace arcade_game
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for Highscore.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Highscore : Window
     {
-        public Window1()
+        public Highscore()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

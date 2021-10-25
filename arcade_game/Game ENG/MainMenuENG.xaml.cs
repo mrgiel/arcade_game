@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace arcade_game
 {
     /// <summary>
-    /// Interaction logic for Highscore.xaml
+    /// Interaction logic for MainMenuENG.xaml
     /// </summary>
-    public partial class Highscore : Window
+    public partial class MainMenuENG : Window
     {
-        public Highscore()
+        public MainMenuENG()
         {
             InitializeComponent();
         }

@@ -45,5 +45,10 @@ namespace arcade_game
             highscore.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

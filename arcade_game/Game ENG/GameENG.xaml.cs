@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace arcade_game
+namespace arcade_game.Game_ENG
 {
     /// <summary>
-    /// Interaction logic for Gewonnen.xaml
+    /// Interaction logic for GameENG.xaml
     /// </summary>
-    public partial class Gewonnen : Window
+    public partial class GameENG : Window
     {
-        public Gewonnen()
+        public GameENG()
         {
             InitializeComponent();
         }
