@@ -52,10 +52,6 @@ namespace WpfApp1
             this.player2 = player2;
         }
 
-        private void QuitGame(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
 
         private void game_KeyDown(object sender, KeyEventArgs e)
         {
@@ -148,6 +144,9 @@ namespace WpfApp1
             }
         }
 
+        /// <summary>
+        /// Zorgt er voor dat je naar het win scherm gaat. Stuurt spelerdata (highscore en namen) mee
+        /// </summary>
         private void Win()
         {
             Win won = new Win(highscore, teamname, player1, player2);
@@ -155,11 +154,19 @@ namespace WpfApp1
             this.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// Zorgt er voor dat je naar het verlies scherm gaat. Stuurt spelerdata mee.
+        /// </summary>
         private void Lose()
         {
             Lose lost = new Lose(highscore, teamname, player1, player2);
             lost.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
+        }
+
+        private void QuitGame(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

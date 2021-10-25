@@ -37,10 +37,13 @@ namespace arcade_game
             AddHighscoreToDatabase(highscore, teamname, player1, player2);
         }
 
-        public Win()
-        {
-        }
-
+        /// <summary>
+        /// Stuurt de playerdata (namen en score) door naar de database.
+        /// </summary>
+        /// <param name="highscore"></param>
+        /// <param name="teamname"></param>
+        /// <param name="player1"></param>
+        /// <param name="player2"></param>
         private void AddHighscoreToDatabase(int highscore, string teamname, string player1, string player2)
         {
             string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\gbuss\\Source\\Repos\\mrgiel\\arcade_game\\arcade_game\\Data\\Database1.mdf\";Integrated Security=True";
@@ -67,6 +70,27 @@ namespace arcade_game
         private void QuitGame(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void HomeScreen(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void Opnieuw(object sender, RoutedEventArgs e)
+        {
+            StartGame startgame = new StartGame();
+            startgame.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void Opties(object sender, RoutedEventArgs e)
+        {
+            Window1 options = new Window1();
+            options.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
         }
     }
 }

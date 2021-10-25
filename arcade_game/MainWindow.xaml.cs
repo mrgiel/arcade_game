@@ -50,5 +50,17 @@ namespace arcade_game
         {
             Application.Current.Shutdown();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Window1 options = new Window1();
+            options.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void QuitGame(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

@@ -19,17 +19,17 @@
         <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="382,173,151,190"/>
         <Label Content="Totale Score" HorizontalAlignment="Left" Margin="414,182,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9" FontFamily="Impact" FontWeight="Bold" FontSize="36"/>
         <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="382,257,151,106"/>
-        <Button Content="Start" HorizontalAlignment="Center" Margin="0,356,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.951,0.829" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" Foreground="#FFF9F9F9" FontFamily="Impact" Width="120">
+        <Button Content="Start" HorizontalAlignment="Center" Margin="0,356,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.951,0.829" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" Foreground="#FFF9F9F9" FontFamily="Impact" Width="120" Click="HomeScreen">
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
         </Button>
-        <Button Content="Opnieuw" HorizontalAlignment="Left" Margin="151,356,0,0" VerticalAlignment="Top" Height="52" RenderTransformOrigin="0.58,0.439" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="36" FontWeight="Bold" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" Width="167">
+        <Button Content="Opnieuw" HorizontalAlignment="Left" Margin="151,356,0,0" VerticalAlignment="Top" Height="52" RenderTransformOrigin="0.58,0.439" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="36" FontWeight="Bold" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" Width="167" Click="Opnieuw">
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
         </Button>
-        <Button Content="Opties" HorizontalAlignment="Left" Margin="482,356,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="36" FontWeight="Bold" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" Height="52" Width="166">
+        <Button Content="Opties" HorizontalAlignment="Left" Margin="482,356,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="36" FontWeight="Bold" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" Height="52" Width="166" Click="Opties">
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>

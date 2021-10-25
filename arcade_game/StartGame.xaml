@@ -111,12 +111,12 @@
                     <ImageBrush/>
                 </Button.Background>
             </Button>
-            <Button Content="Terug" HorizontalAlignment="Left" Margin="125,0,0,0" VerticalAlignment="Center" BorderBrush="White" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" FontFamily="Impact" Foreground="White" Width="130" Height="72">
+            <Button Content="Terug" HorizontalAlignment="Left" Margin="125,0,0,0" VerticalAlignment="Center" BorderBrush="White" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" FontFamily="Impact" Foreground="White" Width="130" Height="72" Click="Button_Click_1">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
             </Button>
-            <Button Content="Opties" HorizontalAlignment="Left" Margin="545,0,0,0" VerticalAlignment="Center" BorderBrush="White" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" FontFamily="Impact" Foreground="White" Height="72" Width="128">
+            <Button Content="Opties" HorizontalAlignment="Left" Margin="545,0,0,0" VerticalAlignment="Center" BorderBrush="White" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" FontFamily="Impact" Foreground="White" Height="72" Width="128" Click="Button_Click_2">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>

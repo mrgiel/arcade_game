@@ -15,7 +15,7 @@
             <ImageBrush ImageSource="/Image/istockphoto-1182467404-170667a.jpg"/>
         </Grid.Background>
         <Border BorderThickness="5,5,5,5" BorderBrush="White" Margin="30,20,30,20">
-            <Button Content="Terug" Margin="551,15,23,325" Foreground="White" FontFamily="Impact" FontWeight="Bold" FontSize="24" BorderBrush="White" BorderThickness="4,3,4,3">
+            <Button Content="Terug" Margin="551,15,23,325" Foreground="White" FontFamily="Impact" FontWeight="Bold" FontSize="24" BorderBrush="White" BorderThickness="4,3,4,3" Click="Back">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
