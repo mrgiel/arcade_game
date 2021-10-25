@@ -45,5 +45,10 @@ namespace arcade_game
             highscore.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
         }
+
+        private void QuitGame(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

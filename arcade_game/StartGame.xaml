@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:arcade_game"
         mc:Ignorable="d"
-        Title="StartGame" Height="450" Width="800">
+        Title="StartGame" Height="473" Width="815" Closed="QuitGame">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Image/istockphoto-1182467404-170667a.jpg"/>

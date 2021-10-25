@@ -63,5 +63,10 @@ namespace arcade_game
                 connection.Close();
             }
         }
+
+        private void QuitGame(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

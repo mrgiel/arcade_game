@@ -52,6 +52,11 @@ namespace WpfApp1
             this.player2 = player2;
         }
 
+        private void QuitGame(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
         private void game_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.A)

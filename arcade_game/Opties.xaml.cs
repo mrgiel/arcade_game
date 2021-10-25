@@ -23,5 +23,10 @@ namespace arcade_game
         {
             InitializeComponent();
         }
+
+        private void QuitGame(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
