@@ -49,5 +49,10 @@ namespace arcade_game
             game.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
         }
+
+        private void teamnaam_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
