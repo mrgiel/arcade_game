@@ -30,7 +30,7 @@
                      BorderThickness="1" FontSize="25"
                      TextAlignment="Center" 
                      Margin="100,0,100,0"
-                     VerticalContentAlignment="Center" TextChanged="teamnaam_TextChanged"
+                     VerticalContentAlignment="Center"
                        />
             <TextBlock x:Name="Placeholder" IsHitTestVisible="False" TextWrapping="Wrap" Text="Teamnaam:..." VerticalAlignment="Center" Foreground="DarkGray" HorizontalAlignment="Center">
                 <TextBlock.Style>

@@ -12,7 +12,7 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="/istockphoto-1182467404-170667a.jpg"/>
+            <ImageBrush ImageSource="/Image/istockphoto-1182467404-170667a.jpg"/>
         </Grid.Background>
         <Border BorderThickness="5,5,5,5" BorderBrush="White" Margin="70,10,70,10"/>
         <Border BorderThickness="5,5,5,5" BorderBrush="White" Margin="70,10,70,331"/>

@@ -19,7 +19,7 @@ namespace arcade_game
         public string teamname;
         public string player1;
         public string player2;
-        public int highscore = 10;
+        public int highscore;
 
         public StartGame()
         {
@@ -35,7 +35,6 @@ namespace arcade_game
         /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            highscore = highscore;
             teamname = teamnaam.Text;
             player1 = speler1.Text;
             player2 = speler2.Text;
@@ -43,16 +42,10 @@ namespace arcade_game
             System.Diagnostics.Debug.WriteLine("speler 1 is: " + player1);
             System.Diagnostics.Debug.WriteLine("speler 2 is: " + player2);
             //todo check of alles is ingevuld
-            //todo doorgaan naar de game
 
             WpfApp1.Game game = new WpfApp1.Game(highscore, teamname, player1, player2);
             game.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
-        }
-
-        private void teamnaam_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

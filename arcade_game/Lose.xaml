@@ -1,14 +1,14 @@
-﻿<Window x:Class="arcade_game.Gewonnen"
+﻿<Window x:Class="arcade_game.Lose"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:arcade_game"
         mc:Ignorable="d"
-        Title="Gewonnen" Height="450" Width="800">
+        Title="Lose" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/istockphoto-1182467404-170667a.jpg"/>
+            <ImageBrush ImageSource="/Image/istockphoto-1182467404-170667a.jpg"/>
         </Grid.Background>
         <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="232,40,232,294"/>
         <Label Content="Verloren" HorizontalAlignment="Center" Margin="0,48,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="60" FontWeight="Bold"/>
@@ -37,4 +37,3 @@
 
     </Grid>
 </Window>
-    
