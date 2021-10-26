@@ -23,12 +23,13 @@ namespace WpfApp1
     {
         private bool moveUp2 = false, moveLeft2 = false, moveRight2 = false;
         private bool moveUp1 = false, moveLeft1 = false, moveRight1 = false;
+        private bool spaceLeft1 = true, spaceRight1 = true, spaceUp1 = true;
 
         private bool Gravity1 = true, Gravity2 = true;
         private DispatcherTimer gameTimer = new DispatcherTimer();
 
-        const int playerSpeed = 10;
-        const int GravitySpeed = 4;
+        const int playerSpeed = 2;
+        const int GravitySpeed = 1;
 
         private void game_KeyDown(object sender, KeyEventArgs e)
         {
@@ -75,18 +76,18 @@ namespace WpfApp1
 
         private void GameEngine(object sender, EventArgs e)
         {
-            if (moveUp1 == true && Canvas.GetTop(Player1) > 0)
+            if (moveUp1 == true && Canvas.GetTop(Player1) > 0 && spaceUp1 == true)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - playerSpeed);
-            if (moveRight1 == true && Canvas.GetLeft(Player1) + (Player1.Width * 1.5) < Application.Current.MainWindow.Width)
+            if (moveRight1 == true && Canvas.GetLeft(Player1) + (Player1.Width * 1.5) < 510 && spaceRight1 == true)
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + playerSpeed);
-            if (moveLeft1 == true && Canvas.GetLeft(Player1) > 0)
+            if (moveLeft1 == true && Canvas.GetLeft(Player1) > 0 && spaceLeft1 == true)
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) - playerSpeed);
             if (Gravity1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + GravitySpeed);
 
             if (moveUp2 == true && Canvas.GetTop(Player2) > 0)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) - playerSpeed);
-            if (moveRight2 == true && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < Application.Current.MainWindow.Width)
+            if (moveRight2 == true && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 510)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) + playerSpeed);
             if (moveLeft2 == true && Canvas.GetLeft(Player2) > 0)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) - playerSpeed);
@@ -104,17 +105,33 @@ namespace WpfApp1
 
                     if (player1HitBox.IntersectsWith(platformHitBox))
                     {
-                        Gravity1 = false;
-                        Canvas.SetTop(Player1, Canvas.GetTop(x) - Player1.Height);
+                        if (Canvas.GetTop(Player1) < (Canvas.GetTop(x) - (Player1.Height - 1)))
+                        {
+                            Gravity1 = false;
+                        }
+                        if (Canvas.GetLeft(Player1) == (Canvas.GetLeft(x) - Player1.Width + 1) && Canvas.GetTop(Player1) > (Canvas.GetTop(x) - Player1.Height))
+                        {
+                            spaceRight1 = false;
+                        }
+                        if (Canvas.GetLeft(Player1) == (Canvas.GetLeft(x) + x.Width - 1) && Canvas.GetTop(Player1) > (Canvas.GetTop(x) - Player1.Height))
+                        {
+                            spaceLeft1 = false;
+                        }
+                        if (Canvas.GetTop(Player1) == Canvas.GetTop(x) + x.Height - 1)
+                        {
+                            spaceUp1 = false;
+                        }
                     }
                     else
                     {
                         Gravity1 = true;
+                        spaceRight1 = true;
+                        spaceLeft1 = true;
+                        spaceUp1 = true;
                     }
                     if (player2HitBox.IntersectsWith(platformHitBox))
                     {
-                        Gravity2 = false;
-                        Canvas.SetTop(Player2, Canvas.GetTop(x) - Player2.Height);
+                        colision2();
                     }
                     else
                     {
@@ -122,6 +139,14 @@ namespace WpfApp1
                     }
                 }
             }
+        }
+        public void colision1()
+        {
+            
+        }
+        public void colision2()
+        {
+            Gravity2 = false;
         }
     }
 }

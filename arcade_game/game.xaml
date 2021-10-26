@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="Game" Height="800" Width="500">
     <Canvas x:Name="game" KeyDown="game_KeyDown" KeyUp="game_KeyUp" Focusable="True">
-        
+
         <Rectangle x:Name="Player1"
                    Fill="Blue"
                    Tag="player"
                    Height="50"
                    Width="50"
-                   Canvas.Left="314"
-                   Canvas.Top="225"/>
+                   Canvas.Left="423"
+                   Canvas.Top="456"/>
         <Rectangle x:Name="Player2"
                    Fill="red"
                    Tag="player"
@@ -22,9 +22,11 @@
                    Width="50"
                    Canvas.Left="398"
                    Canvas.Top="225" RenderTransformOrigin="0.457,0.503"/>
-        <Rectangle x:Name="platoform1" Tag="platform" Fill="Black" Height="50" Width="300" Canvas.Left="189" Canvas.Top="464"/>
-        <Rectangle x:Name="platoform2" Tag="platform" Fill="Black" Height="52" Width="300" Canvas.Left="14" Canvas.Top="592"/>
-        <Rectangle x:Name="platoform3" Tag="platform" Fill="Black" Height="50" Width="300" Canvas.Left="189" Canvas.Top="702"/>
+        <Rectangle x:Name="platoform2" 
+                   Tag="platform" 
+                   Fill="Black" 
+                   Height="50" Width="300" 
+                   Canvas.Left="100" Canvas.Top="500"/>
 
     </Canvas>
 </Window>
