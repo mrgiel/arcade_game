@@ -13,16 +13,16 @@
                    Tag="player"
                    Height="50"
                    Width="50"
-                   Canvas.Left="525"
-                   Canvas.Top="22" RenderTransformOrigin="0.501,0.539"/>
+                   Canvas.Left="474"
+                   Canvas.Top="158" RenderTransformOrigin="0.501,0.539"/>
         <Rectangle x:Name="Player2"
                    Fill="red"
                    Tag="player"
                    Height="49"
 
                    Width="50"
-                   Canvas.Left="474"
-                   Canvas.Top="166" />
+                   Canvas.Left="286"
+                   Canvas.Top="17" />
         <Rectangle x:Name="platform1" 
                    Tag="platform" 
                    Fill="Yellow" 
@@ -67,7 +67,7 @@
                    Tag="knop"
                    Fill="Pink"
                    Height="6" Width="50" 
-                   Canvas.Left="694" Canvas.Top="223"/>
+                   Canvas.Left="474" Canvas.Top="223"/>
         <Rectangle x:Name="knop2"
                    Tag="knop"
                    Fill="Pink"
