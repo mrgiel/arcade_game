@@ -100,7 +100,7 @@ namespace WpfApp1
         {
             if (moveUp1 && Canvas.GetTop(Player1) > 0 && spaceUp1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - playerSpeed);
-            if (moveRight1 && Canvas.GetLeft(Player1) + (Player1.Width * 1.5) < 510 && spaceRight1)
+            if (moveRight1 && Canvas.GetLeft(Player1) + (Player1.Width * 1.5) < 815 && spaceRight1)
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + playerSpeed);
             if (moveLeft1 && Canvas.GetLeft(Player1) > 0 && spaceLeft1)
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) - playerSpeed);
@@ -109,7 +109,7 @@ namespace WpfApp1
 
             if (moveUp2&& Canvas.GetTop(Player2) > 0 && spaceUp2)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) - playerSpeed);
-            if (moveRight2  && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 510 && spaceRight2)
+            if (moveRight2  && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 815 && spaceRight2)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) + playerSpeed);
             if (moveLeft2 && Canvas.GetLeft(Player2) > 0 && spaceLeft2)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) - playerSpeed);
@@ -178,6 +178,44 @@ namespace WpfApp1
                     }
                 }
             }
+            foreach (var x in game.Children.OfType<Image>())
+            {
+                if ((string)x.Tag == "spike")
+                {
+                    Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
+                    Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
+                    Rect spikeHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+                    if (player1HitBox.IntersectsWith(spikeHitBox))
+                    {
+                        Lose();
+                    }
+                    if (player2HitBox.IntersectsWith(spikeHitBox))
+                    {
+                        Lose();
+                    }
+                }
+                if ((string)x.Tag == "door")
+                {
+                    bool player1door = false;
+                    bool player2door = false;
+
+                    Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
+                    Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
+                    Rect doorHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+                    if (player1HitBox.IntersectsWith(doorHitBox))
+                    {
+                        player1door = true;
+                    }
+                    if (player2HitBox.IntersectsWith(doorHitBox))
+                    {
+                        player2door = true;
+                    }
+                    if (player1door && player2door)
+                    {
+                        Win();
+                    }
+                }
+            }
         }
 
             /// Zorgt er voor dat je naar het win scherm gaat.Stuurt spelerdata (highscore en namen) mee
@@ -187,6 +225,7 @@ namespace WpfApp1
             Win won = new Win(highscore, teamname, player1, player2);
             won.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
+            gameTimer.Stop();
         }
 
         /// <summary>
@@ -197,6 +236,7 @@ namespace WpfApp1
             Lose lost = new Lose(highscore, teamname, player1, player2);
             lost.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
+            gameTimer.Stop();
         }
 
         private void QuitGame(object sender, System.ComponentModel.CancelEventArgs e)

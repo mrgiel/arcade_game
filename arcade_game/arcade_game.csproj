@@ -7,7 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Image\doorbleu.PNG" />
+    <None Remove="Image\doorred.PNG" />
     <None Remove="Image\istockphoto-1182467404-170667a.jpg" />
+    <None Remove="Image\spikes.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\doorred.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\doorbleu.PNG" />
+    <Resource Include="Image\spikes.PNG" />
   </ItemGroup>
 
   <ItemGroup>
