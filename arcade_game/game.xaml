@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Game" Height="800" Width="500" Closing="QuitGame">
+        Title="Game" Height="473" Width="815" Closing="QuitGame">
     <Canvas x:Name="game" KeyDown="game_KeyDown" KeyUp="game_KeyUp" Focusable="True">
 
         <Rectangle x:Name="Player1"
@@ -13,28 +13,58 @@
                    Tag="player"
                    Height="50"
                    Width="50"
+                   Canvas.Left="605"
+                   Canvas.Top="328" RenderTransformOrigin="0.501,0.539"/>
                    Canvas.Left="273"
                    Canvas.Top="450"/>
         <Rectangle x:Name="Player2"
                    Fill="red"
                    Tag="player"
-                   Height="50"
+                   Height="49"
+
                    Width="50"
-                   Canvas.Left="65"
-                   Canvas.Top="577" />
+                   Canvas.Left="550"
+                   Canvas.Top="328" />
         <Rectangle x:Name="platform1" 
                    Tag="platform" 
                    Fill="Yellow" 
-                   Height="50" Width="300" 
-                   Canvas.Left="100" Canvas.Top="500"/>
+                   Height="50" Width="550" 
+                   Canvas.Left="501" Canvas.Top="86"/>
         <Rectangle x:Name="platform2" 
                    Tag="platform" 
                    Fill="Green" 
-                   Height="50" Width="300" 
-                   Canvas.Left="90" Canvas.Top="367"/>
+                   Height="50" Width="500" 
+                   Canvas.Left="335" Canvas.Top="229"/>
         <Rectangle x:Name="platform" 
                    Tag="platform" 
                    Fill="Orange" 
+                   Height="50" Width="600" 
+                   Canvas.Left="-201" Canvas.Top="86"/>
+        <Rectangle x:Name="platform5" 
+                   Tag="platform" 
+                   Fill="Black" 
+                   Height="50" Width="658" 
+                   Canvas.Left="157" Canvas.Top="378"/>
+        <Image     Source="/Image/spikes.PNG" 
+                   x:Name="spike1" 
+                   Tag ="spike" 
+                   Canvas.Left="605" Canvas.Top="188" 
+                   Height="41" Width="50" />
+        <Image     Source="/Image/spikes.PNG" 
+                   x:Name="spike2" 
+                   Tag ="spike" 
+                   Canvas.Left="555" Canvas.Top="188" 
+                   Height="41" Width="50" />
+        <Image     Source="/Image/doorbleu.PNG" 
+                   x:Name ="doorbleu"
+                   Tag ="door"
+                   Canvas.Left="756" Canvas.Top="297" 
+                   Height="83" Width="38" />
+        <Image     Source="/Image/doorred.PNG" 
+                   x:Name ="doorred"
+                   Tag ="door"
+                   Canvas.Left="680" Canvas.Top="297"
+                   Height="83" Width="38" />
                    Height="50" Width="300" 
                    Canvas.Left="148" Canvas.Top="680"/>
         <Label x:Name="score"
@@ -42,6 +72,7 @@
                Content=""
                ></Label>
         <Image Height="29" Canvas.Left="183" Stretch="Fill" Source="Image/pngwing.com.png" Canvas.Top="466" Width="29" x:Name="coin" Tag="coin" Panel.ZIndex="-1" />
+
 
 
     </Canvas>
