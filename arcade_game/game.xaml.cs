@@ -29,6 +29,8 @@ namespace WpfApp1
         public string player2 { get; set; }
         public int highscore { get; set; }
 
+       
+
         private bool moveUp2, moveLeft2, moveRight2;
         private bool moveUp1, moveLeft1, moveRight1;
 
@@ -100,6 +102,7 @@ namespace WpfApp1
 
         private void GameEngine(object sender, EventArgs e)
         {
+            score.Content = highscore;
             if (moveUp1 && Canvas.GetTop(Player1) > 0 && spaceUp1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - playerSpeed);
             if (moveRight1 && Canvas.GetLeft(Player1) + (Player1.Width * 1.5) < 815 && spaceRight1)
@@ -261,6 +264,18 @@ namespace WpfApp1
                     if (player2HitBox.IntersectsWith(spikeHitBox))
                     {
                         Lose();
+                    }
+                }
+                if ((string)x.Tag == "coin")
+                {
+                    Rect coinHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+                    if (player1HitBox.IntersectsWith(coinHitBox) || player2HitBox.IntersectsWith(coinHitBox)){
+                        if (x.IsVisible)
+                        {
+
+                            x.Visibility = Visibility.Hidden;
+                            highscore += 1;
+                        }
                     }
                 }
             }

@@ -78,6 +78,10 @@
                    Fill="Pink"
                    Height="50" Width="102" 
                    Canvas.Left="399" Canvas.Top="87"/>
+        <Label x:Name="score" Tag="score" Content="" Canvas.Left="39" Canvas.Top="22"/>
+        <Image Tag="coin" Height="25" Canvas.Left="642" Stretch="Fill" Source="Image/pngwing.com.png" Canvas.Top="56" Width="25"/>
+        <Image Tag="coin" Height="25" Canvas.Left="674" Stretch="Fill" Source="/Image/pngwing.com.png" Canvas.Top="56" Width="25"/>
+        <Image Tag="coin" Height="25" Canvas.Left="706" Stretch="Fill" Source="/Image/pngwing.com.png" Canvas.Top="56" Width="25"/>
 
 
     </Canvas>
