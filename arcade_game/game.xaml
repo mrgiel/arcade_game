@@ -20,8 +20,8 @@
                    Tag="player"
                    Height="50"
                    Width="50"
-                   Canvas.Left="398"
-                   Canvas.Top="225" RenderTransformOrigin="0.457,0.503"/>
+                   Canvas.Left="65"
+                   Canvas.Top="577" />
         <Rectangle x:Name="platoform2" 
                    Tag="platform" 
                    Fill="Black" 

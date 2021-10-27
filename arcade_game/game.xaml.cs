@@ -25,6 +25,8 @@ namespace WpfApp1
         private bool moveUp1 = false, moveLeft1 = false, moveRight1 = false;
         private bool spaceLeft1 = true, spaceRight1 = true, spaceUp1 = true;
 
+        private bool spaceLeft2 = true, spaceRight2 = true, spaceUp2 = true;
+
         private bool Gravity1 = true, Gravity2 = true;
         private DispatcherTimer gameTimer = new DispatcherTimer();
 
@@ -85,11 +87,11 @@ namespace WpfApp1
             if (Gravity1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + GravitySpeed);
 
-            if (moveUp2 == true && Canvas.GetTop(Player2) > 0)
+            if (moveUp2 == true && Canvas.GetTop(Player2) > 0 && spaceUp2 == true)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) - playerSpeed);
-            if (moveRight2 == true && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 510)
+            if (moveRight2 == true && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 510 && spaceRight2 == true)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) + playerSpeed);
-            if (moveLeft2 == true && Canvas.GetLeft(Player2) > 0)
+            if (moveLeft2 == true && Canvas.GetLeft(Player2) > 0 && spaceLeft2 == true)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) - playerSpeed);
             if (Gravity2)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) + GravitySpeed);
@@ -131,23 +133,34 @@ namespace WpfApp1
                     }
                     if (player2HitBox.IntersectsWith(platformHitBox))
                     {
-                        colision2();
+                        if (Canvas.GetTop(Player2) < (Canvas.GetTop(x) - (Player2.Height - 1)))
+                        {
+                            Gravity2 = false;
+                        }
+                        if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) - Player2.Width + 1) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
+                        {
+                            spaceRight2 = false;
+                        }
+                        if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) + x.Width - 1) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
+                        {
+                            spaceLeft2 = false;
+                        }
+                        if (Canvas.GetTop(Player2) == Canvas.GetTop(x) + x.Height - 1)
+                        {
+                            spaceUp2 = false;
+                        }
                     }
                     else
                     {
                         Gravity2 = true;
+                        spaceRight2 = true;
+                        spaceLeft2 = true;
+                        spaceUp2 = true;
                     }
                 }
             }
         }
-        public void colision1()
-        {
-            
-        }
-        public void colision2()
-        {
-            Gravity2 = false;
-        }
+        
     }
 }
 
