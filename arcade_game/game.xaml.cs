@@ -1,4 +1,5 @@
-﻿using System;
+﻿using arcade_game;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -27,14 +28,33 @@ namespace WpfApp1
         public string player1 { get; set; }
         public string player2 { get; set; }
         public int highscore { get; set; }
+
         private bool moveUp2 = false, moveLeft2 = false, moveRight2 = false;
         private bool moveUp1 = false, moveLeft1 = false, moveRight1 = false;
+        private bool spaceLeft1 = true, spaceRight1 = true, spaceUp1 = true;
+
+        private bool spaceLeft2 = true, spaceRight2 = true, spaceUp2 = true;
 
         private bool Gravity1 = true, Gravity2 = true;
         private DispatcherTimer gameTimer = new DispatcherTimer();
 
-        const int playerSpeed = 10;
-        const int GravitySpeed = 4;
+        const int playerSpeed = 2;
+        const int GravitySpeed = 1;
+
+        public Game(int highscore, string teamname, string player1, string player2)
+        {
+            InitializeComponent();
+            gameTimer.Interval = TimeSpan.FromMilliseconds(20);
+            gameTimer.Tick += GameEngine;
+            gameTimer.Start();
+            game.Focus();
+
+            this.highscore = highscore;
+            this.teamname = teamname;
+            this.player1 = player1;
+            this.player2 = player2;
+        }
+
 
         private void game_KeyDown(object sender, KeyEventArgs e)
         {
@@ -51,6 +71,12 @@ namespace WpfApp1
                 moveRight2 = true;
             if (e.Key == Key.Up)
                 moveUp2 = true;
+
+            // Dit moet nog aangepast worden
+            //if (e.Key == Key.K)
+            //    Win();
+            //if (e.Key == Key.L)
+            //    Lose();
         }
         private void game_KeyUp(object sender, KeyEventArgs e)
         {
@@ -69,36 +95,23 @@ namespace WpfApp1
                 moveUp2 = false;
         }
 
-        public Game(int highscore, string teamname, string player1, string player2)
-        {
-            this.highscore = highscore;
-            this.teamname = teamname;
-            this.player1 = player1;
-            this.player2 = player2;
-            InitializeComponent();
-            gameTimer.Interval = TimeSpan.FromMilliseconds(20);
-            gameTimer.Tick += GameEngine;
-            gameTimer.Start();
-            game.Focus();
-            AddHighscoreToDatabase(highscore, teamname, player1, player2);
-        }
 
         private void GameEngine(object sender, EventArgs e)
         {
-            if (moveUp1 == true && Canvas.GetTop(Player1) > 0)
+            if (moveUp1 == true && Canvas.GetTop(Player1) > 0 && spaceUp1 == true)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - playerSpeed);
-            if (moveRight1 == true && Canvas.GetLeft(Player1) + (Player1.Width * 1.5) < Application.Current.MainWindow.Width)
+            if (moveRight1 == true && Canvas.GetLeft(Player1) + (Player1.Width * 1.5) < 510 && spaceRight1 == true)
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + playerSpeed);
-            if (moveLeft1 == true && Canvas.GetLeft(Player1) > 0)
+            if (moveLeft1 == true && Canvas.GetLeft(Player1) > 0 && spaceLeft1 == true)
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) - playerSpeed);
             if (Gravity1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + GravitySpeed);
 
-            if (moveUp2 == true && Canvas.GetTop(Player2) > 0)
+            if (moveUp2 == true && Canvas.GetTop(Player2) > 0 && spaceUp2 == true)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) - playerSpeed);
-            if (moveRight2 == true && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < Application.Current.MainWindow.Width)
+            if (moveRight2 == true && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 510 && spaceRight2 == true)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) + playerSpeed);
-            if (moveLeft2 == true && Canvas.GetLeft(Player2) > 0)
+            if (moveLeft2 == true && Canvas.GetLeft(Player2) > 0 && spaceLeft2 == true)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) - playerSpeed);
             if (Gravity2)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) + GravitySpeed);
@@ -108,53 +121,104 @@ namespace WpfApp1
             {
                 if ((string)x.Tag == "platform")
                 {
+                    x.Stroke = Brushes.Black;
+
                     Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
                     Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
                     Rect platformHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
                     if (player1HitBox.IntersectsWith(platformHitBox))
                     {
-                        Gravity1 = false;
-                        Canvas.SetTop(Player1, Canvas.GetTop(x) - Player1.Height);
+                        if (Canvas.GetTop(Player1) < (Canvas.GetTop(x) - (Player1.Height - 1)))
+                        {
+                            Gravity1 = false;
+                        }
+                        if (Canvas.GetLeft(Player1) == (Canvas.GetLeft(x) - Player1.Width + 1) && Canvas.GetTop(Player1) > (Canvas.GetTop(x) - Player1.Height))
+                        {
+                            spaceRight1 = false;
+                        }
+                        if (Canvas.GetLeft(Player1) == (Canvas.GetLeft(x) + x.Width - 1) && Canvas.GetTop(Player1) > (Canvas.GetTop(x) - Player1.Height))
+                        {
+                            spaceLeft1 = false;
+                        }
+                        if (Canvas.GetTop(Player1) == Canvas.GetTop(x) + x.Height - 1)
+                        {
+                            spaceUp1 = false;
+                        }
                     }
                     else
                     {
                         Gravity1 = true;
+                        spaceRight1 = true;
+                        spaceLeft1 = true;
+                        spaceUp1 = true;
                     }
                     if (player2HitBox.IntersectsWith(platformHitBox))
                     {
-                        Gravity2 = false;
-                        Canvas.SetTop(Player2, Canvas.GetTop(x) - Player2.Height);
+                        if (Canvas.GetTop(Player2) < (Canvas.GetTop(x) - (Player2.Height - 1)))
+                        {
+                            Gravity2 = false;
+                        }
+                        if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) - Player2.Width + 1) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
+                        {
+                            spaceRight2 = false;
+                        }
+                        if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) + x.Width - 1) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
+                        {
+                            spaceLeft2 = false;
+                        }
+                        if (Canvas.GetTop(Player2) == Canvas.GetTop(x) + x.Height - 1)
+                        {
+                            spaceUp2 = false;
+                        }
                     }
                     else
                     {
                         Gravity2 = true;
+                        spaceRight2 = true;
+                        spaceLeft2 = true;
+                        spaceUp2 = true;
                     }
                 }
             }
         }
-        private void AddHighscoreToDatabase(int highscore, string teamname, string player1, string player2)
-        {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\gbuss\\Source\\Repos\\mrgiel\\arcade_game\\arcade_game\\Data\\Database1.mdf\";Integrated Security=True";
-            string query = "INSERT INTO [Game] ([Teamnaam],[Speler1],[Speler2],[Highscore]) VALUES ('"+teamname+"', '"+player1+ "','" + player2 + "','" + highscore + "')";
 
-            SqlConnection connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand();
-            try
-            {
-                command.CommandText = query;
-                command.CommandType = CommandType.Text;
-                command.Connection = connection;
-                connection.Open();
-                command.ExecuteNonQuery();
-                connection.Close();
-                MessageBox.Show("gelukt");
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                connection.Close();
-            }
+        
+        
+
+
+        public void colision1()
+        {
+            
+        }
+        public void colision2()
+        {
+            Gravity2 = false;
+        }
+
+        /// <summary>
+            /// Zorgt er voor dat je naar het win scherm gaat.Stuurt spelerdata (highscore en namen) mee
+            /// </summary>
+            private void Win()
+        {
+            Win won = new Win(highscore, teamname, player1, player2);
+            won.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
+        }
+
+        /// <summary>
+        /// Zorgt er voor dat je naar het verlies scherm gaat. Stuurt spelerdata mee.
+        /// </summary>
+        private void Lose()
+        {
+            Lose lost = new Lose(highscore, teamname, player1, player2);
+            lost.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void QuitGame(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
