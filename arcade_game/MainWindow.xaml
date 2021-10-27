@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:arcade_game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="473" Width="815" Closed="QuitGame">
     <Grid x:Name="Game" HorizontalAlignment="Left" Width="800">
         <Grid.Background>
             <ImageBrush ImageSource="/Image/istockphoto-1182467404-170667a.jpg"/>
@@ -20,8 +20,8 @@
                 </Border>
             </Grid>
             <Button Content="High score" HorizontalAlignment="Center" Margin="0,229,0,0" VerticalAlignment="Top" Height="63" Width="358" Background="{x:Null}" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold" BorderBrush="White" BorderThickness="3,2,3,2" Click="Button_Click"/>
-            <Button Content="Opties" HorizontalAlignment="Left" Margin="221,325,0,0" VerticalAlignment="Top" Height="76" Width="165" IsCancel="True" Background="{x:Null}" BorderBrush="White" BorderThickness="3,2,3,2" FontFamily="Impact" FontSize="36" FontWeight="Bold" Foreground="White"/>
-            <Button Content="Stoppen" HorizontalAlignment="Left" Margin="414,325,0,0" VerticalAlignment="Top" Height="76" Width="165" Click="Button_Click_1" Background="{x:Null}" BorderThickness="3,2,3,2" BorderBrush="White" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold"/>
+            <Button Content="Opties" HorizontalAlignment="Left" Margin="221,325,0,0" VerticalAlignment="Top" Height="76" Width="165" IsCancel="True" Background="{x:Null}" BorderBrush="White" BorderThickness="3,2,3,2" FontFamily="Impact" FontSize="36" FontWeight="Bold" Foreground="White" Click="Button_Click_2"/>
+            <Button Content="Stoppen" HorizontalAlignment="Left" Margin="414,325,0,0" VerticalAlignment="Top" Height="76" Width="165" Click="QuitGame" Background="{x:Null}" BorderThickness="3,2,3,2" BorderBrush="White" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold"/>
             <Border BorderThickness="5,5,5,5" BorderBrush="White" Margin="10,10,647,10"/>
             <Border BorderThickness="5,5,5,5" BorderBrush="White" Margin="647,10,10,10"/>
         </Grid>
