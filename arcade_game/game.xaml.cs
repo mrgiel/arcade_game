@@ -73,10 +73,10 @@ namespace WpfApp1
                 moveUp2 = true;
 
             // Dit moet nog aangepast worden
-            //if (e.Key == Key.K)
-            //    Win();
-            //if (e.Key == Key.L)
-            //    Lose();
+            if (e.Key == Key.K)
+                Win();
+            if (e.Key == Key.L)
+                Lose();
         }
         private void game_KeyUp(object sender, KeyEventArgs e)
         {

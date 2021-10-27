@@ -17,7 +17,7 @@
             <ImageBrush ImageSource="/Image/istockphoto-1182467404-170667a.jpg"/>
         </Grid.Background>
         <Border BorderThickness="5,5,5,5" BorderBrush="White" Margin="36,10,70,10" Grid.ColumnSpan="2" Grid.Column="1"/>
-        <Border BorderThickness="5,5,5,5" BorderBrush="White" Margin="36,10,70,331" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Border BorderThickness="5,5,5,5" BorderBrush="White" Margin="36,10,70,354" Grid.ColumnSpan="2" Grid.Column="1"/>
         <Label Content="Score" HorizontalAlignment="Left" Margin="566,30,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold" Grid.ColumnSpan="2" Grid.Column="1"/>
         <Label Content="Speler 2" HorizontalAlignment="Left" Margin="391,30,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold" Grid.Column="1"/>
         <Label Content="Speler 1" HorizontalAlignment="Left" Margin="206,30,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold" Grid.Column="1"/>
