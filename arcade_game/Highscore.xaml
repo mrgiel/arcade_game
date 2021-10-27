@@ -5,33 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:arcade_game"
         mc:Ignorable="d"
-        Title="Highscore" Height="450" Width="800">
+        Title="Highscore" Height="473" Width="815" Closed="QuitGame">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="34*"/>
+            <ColumnDefinition Width="650*"/>
+            <ColumnDefinition Width="131*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="/istockphoto-1182467404-170667a.jpg"/>
+            <ImageBrush ImageSource="/Image/istockphoto-1182467404-170667a.jpg"/>
         </Grid.Background>
-        <Border BorderThickness="5,5,5,5" BorderBrush="White" Margin="70,10,70,10"/>
-        <Border BorderThickness="5,5,5,5" BorderBrush="White" Margin="70,10,70,331"/>
-        <Label Content="Score" HorizontalAlignment="Left" Margin="600,30,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold"/>
-        <Label Content="Speler 2" HorizontalAlignment="Left" Margin="425,30,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold"/>
-        <Label Content="Speler 1" HorizontalAlignment="Left" Margin="240,30,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold"/>
-        <Label Content="Rank" HorizontalAlignment="Left" Margin="100,30,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold"/>
-        <Label Content="1st" HorizontalAlignment="Left" Margin="123,108,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.329,0.996" Foreground="#FFFBF7F7" FontFamily="Impact" FontWeight="Bold" FontSize="24"/>
-        <Label Content="2nd" HorizontalAlignment="Left" Margin="123,147,0,0" VerticalAlignment="Top" Foreground="#FFFBF7F7" FontFamily="Impact" FontSize="24" RenderTransformOrigin="-2.112,-0.477"/>
-        <Label Content="3rd" HorizontalAlignment="Left" Margin="123,186,0,0" VerticalAlignment="Top" Foreground="#FFFBF7F7" FontFamily="Impact" FontSize="24" RenderTransformOrigin="0.624,1.721"/>
-        <Label Content="4th" HorizontalAlignment="Left" Margin="123,225,0,0" VerticalAlignment="Top" Foreground="#FFFBF7F7" FontSize="24" FontWeight="Bold" FontFamily="Impact" RenderTransformOrigin="0.959,0.51"/>
-        <Label Content="5th" HorizontalAlignment="Left" Margin="123,264,0,0" VerticalAlignment="Top" FontFamily="Impact" FontWeight="Bold" FontSize="24" Foreground="White" RenderTransformOrigin="0.827,0.581"/>
-        <Label Content="6th" HorizontalAlignment="Left" Margin="123,303,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="24" FontWeight="Bold"/>
-        <Label Content="7th" HorizontalAlignment="Left" Margin="123,342,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="24" FontWeight="Bold"/>
-        <Label Content="8th" HorizontalAlignment="Left" Margin="123,381,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontWeight="Bold" FontSize="24" RenderTransformOrigin="0.37,0.602"/>
-        <Button Content="Opties" HorizontalAlignment="Left" Margin="737,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.307,0.647" Height="63" Width="55" Foreground="White" FontFamily="Impact" FontWeight="Bold" FontSize="16" BorderThickness="3,3,3,3" BorderBrush="White">
-            
+        <Border BorderThickness="5,5,5,5" BorderBrush="White" Margin="36,10,70,10" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Border BorderThickness="5,5,5,5" BorderBrush="White" Margin="36,10,70,331" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Label Content="Score" HorizontalAlignment="Left" Margin="566,30,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Label Content="Speler 2" HorizontalAlignment="Left" Margin="391,30,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold" Grid.Column="1"/>
+        <Label Content="Speler 1" HorizontalAlignment="Left" Margin="206,30,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold" Grid.Column="1"/>
+        <Label Content="Rank" HorizontalAlignment="Left" Margin="66,30,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold" Grid.Column="1"/>
+        <Label Content="1st" HorizontalAlignment="Left" Margin="89,108,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.329,0.996" Foreground="#FFFBF7F7" FontFamily="Impact" FontWeight="Bold" FontSize="24" Grid.Column="1"/>
+        <Label Content="2nd" HorizontalAlignment="Left" Margin="89,147,0,0" VerticalAlignment="Top" Foreground="#FFFBF7F7" FontFamily="Impact" FontSize="24" RenderTransformOrigin="-2.112,-0.477" Grid.Column="1"/>
+        <Label Content="3rd" HorizontalAlignment="Left" Margin="89,186,0,0" VerticalAlignment="Top" Foreground="#FFFBF7F7" FontFamily="Impact" FontSize="24" RenderTransformOrigin="0.624,1.721" Grid.Column="1"/>
+        <Label Content="4th" HorizontalAlignment="Left" Margin="89,225,0,0" VerticalAlignment="Top" Foreground="#FFFBF7F7" FontSize="24" FontWeight="Bold" FontFamily="Impact" RenderTransformOrigin="0.959,0.51" Grid.Column="1"/>
+        <Label Content="5th" HorizontalAlignment="Left" Margin="89,264,0,0" VerticalAlignment="Top" FontFamily="Impact" FontWeight="Bold" FontSize="24" Foreground="White" RenderTransformOrigin="0.827,0.581" Grid.Column="1"/>
+        <Label Content="6th" HorizontalAlignment="Left" Margin="89,303,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="24" FontWeight="Bold" Grid.Column="1"/>
+        <Label Content="7th" HorizontalAlignment="Left" Margin="89,342,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontSize="24" FontWeight="Bold" Grid.Column="1"/>
+        <Label Content="8th" HorizontalAlignment="Left" Margin="89,381,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontWeight="Bold" FontSize="24" RenderTransformOrigin="0.37,0.602" Grid.Column="1"/>
+        <Button Content="Opties" HorizontalAlignment="Right" Margin="0,10,8,0" VerticalAlignment="Top" RenderTransformOrigin="0.307,0.647" Height="63" Width="55" Foreground="White" FontFamily="Impact" FontWeight="Bold" FontSize="16" BorderThickness="3,3,3,3" BorderBrush="White" Grid.Column="2" Click="Button_Click_1">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+
         </Button>
-        <Button Content="Terug" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontWeight="Bold" FontSize="16" BorderBrush="White" BorderThickness="3,3,3,3" Height="63" Width="55">
+        <Button Content="Terug" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontWeight="Bold" FontSize="16" BorderBrush="White" BorderThickness="3,3,3,3" Height="63" Width="55" Grid.ColumnSpan="2" Click="Button_Click">
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
