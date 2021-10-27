@@ -72,11 +72,11 @@ namespace WpfApp1
             if (e.Key == Key.Up)
                 moveUp2 = true;
 
-// Dit moet nog aangepast worden
-            if (e.Key == Key.K)
-                Win();
-            if (e.Key == Key.L)
-                Lose();
+            // Dit moet nog aangepast worden
+            //if (e.Key == Key.K)
+            //    Win();
+            //if (e.Key == Key.L)
+            //    Lose();
         }
         private void game_KeyUp(object sender, KeyEventArgs e)
         {
@@ -121,6 +121,8 @@ namespace WpfApp1
             {
                 if ((string)x.Tag == "platform")
                 {
+                    x.Stroke = Brushes.Black;
+
                     Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
                     Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
                     Rect platformHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
@@ -181,6 +183,10 @@ namespace WpfApp1
             }
         }
 
+        
+        
+
+
         public void colision1()
         {
             
@@ -194,11 +200,10 @@ namespace WpfApp1
             Gravity2 = false;
         }
 
-
         /// <summary>
-        /// Zorgt er voor dat je naar het win scherm gaat. Stuurt spelerdata (highscore en namen) mee
-        /// </summary>
-        private void Win()
+            /// Zorgt er voor dat je naar het win scherm gaat.Stuurt spelerdata (highscore en namen) mee
+            /// </summary>
+            private void Win()
         {
             Win won = new Win(highscore, teamname, player1, player2);
             won.Visibility = Visibility.Visible;
