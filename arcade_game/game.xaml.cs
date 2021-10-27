@@ -41,10 +41,12 @@ namespace WpfApp1
         const int playerSpeed = 5;
         const int GravitySpeed = 1;
 
+        
+
         public Game(int highscore, string teamname, string player1, string player2)
         {
             InitializeComponent();
-            gameTimer.Interval = TimeSpan.FromMilliseconds(20);
+            gameTimer.Interval = TimeSpan.FromMilliseconds(10);
             gameTimer.Tick += GameEngine;
             gameTimer.Start();
             game.Focus();
@@ -101,16 +103,16 @@ namespace WpfApp1
             score.Content = highscore;
             if (moveUp1 && Canvas.GetTop(Player1) > 0 && spaceUp1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - playerSpeed);
-            if (moveRight1 && Canvas.GetLeft(Player1) + (Player1.Width * 1.5) < 510 && spaceRight1)
+            if (moveRight1 && Canvas.GetLeft(Player1) + (Player1.Width * 1.5) < 815 && spaceRight1)
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + playerSpeed);
             if (moveLeft1 && Canvas.GetLeft(Player1) > 0 && spaceLeft1)
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) - playerSpeed);
             if (Gravity1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + GravitySpeed);
 
-            if (moveUp2 && Canvas.GetTop(Player2) > 0 && spaceUp2)
+            if (moveUp2&& Canvas.GetTop(Player2) > 0 && spaceUp2)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) - playerSpeed);
-            if (moveRight2 && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 510 && spaceRight2)
+            if (moveRight2  && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 815 && spaceRight2)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) + playerSpeed);
             if (moveLeft2 && Canvas.GetLeft(Player2) > 0 && spaceLeft2)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) - playerSpeed);
@@ -179,24 +181,49 @@ namespace WpfApp1
                     }
                 }
             }
-            foreach (Image y in game.Children.OfType<Image>())
+            foreach (var x in game.Children.OfType<Image>())
             {
-                if ((string)y.Tag == "coin")
+                if ((string)x.Tag == "spike")
                 {
                     Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
                     Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
+                    Rect spikeHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
                     Rect coinHitBox = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
                     if (player1HitBox.IntersectsWith(coinHitBox) || player2HitBox.IntersectsWith(coinHitBox))
-                        if(y.IsVisible)
-                            {
-                                y.Visibility = Visibility.Hidden;
-                                highscore += 1;
-                            }
+                        if (y.IsVisible)
+                        {
+                            y.Visibility = Visibility.Hidden;
+                            highscore += 1;
+                        }
+                    if (player1HitBox.IntersectsWith(spikeHitBox))
+                    {
+                        Lose();
+                    }
+                    if (player2HitBox.IntersectsWith(spikeHitBox))
+                    {
+                        Lose();
+                    }
                 }
+            }
+            bool player1door = false;
+            bool player2door = false;
 
+            Rect Player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
+            Rect Player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
+            Rect doorbleuHitBox = new Rect(Canvas.GetLeft(doorbleu), Canvas.GetTop(doorbleu), doorbleu.Width, doorbleu.Height);
+            Rect doorredHitBox = new Rect(Canvas.GetLeft(doorred), Canvas.GetTop(doorred), doorred.Width, doorred.Height);
 
-                
-
+            if (Player1HitBox.IntersectsWith(doorbleuHitBox))
+            {
+                player1door = true;
+            }
+            if (Player2HitBox.IntersectsWith(doorredHitBox))
+            {
+                player2door = true;
+            }
+            if (player1door && player2door)
+            {
+                Win();
             }
         }
 
@@ -207,6 +234,7 @@ namespace WpfApp1
             Win won = new Win(highscore, teamname, player1, player2);
             won.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
+            gameTimer.Stop();
         }
 
         /// <summary>
@@ -217,6 +245,7 @@ namespace WpfApp1
             Lose lost = new Lose(highscore, teamname, player1, player2);
             lost.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
+            gameTimer.Stop();
         }
 
         private void QuitGame(object sender, System.ComponentModel.CancelEventArgs e)
