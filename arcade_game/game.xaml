@@ -13,8 +13,8 @@
                    Tag="player"
                    Height="50"
                    Width="50"
-                   Canvas.Left="423"
-                   Canvas.Top="456"/>
+                   Canvas.Left="273"
+                   Canvas.Top="450"/>
         <Rectangle x:Name="Player2"
                    Fill="red"
                    Tag="player"
@@ -37,6 +37,12 @@
                    Fill="Orange" 
                    Height="50" Width="300" 
                    Canvas.Left="148" Canvas.Top="680"/>
+        <Label x:Name="score"
+               Tag="score"
+               Content=""
+               ></Label>
+        <Image Height="29" Canvas.Left="183" Stretch="Fill" Source="Image/pngwing.com.png" Canvas.Top="466" Width="29" x:Name="coin" Tag="coin" Panel.ZIndex="-1" />
+
 
     </Canvas>
 </Window>

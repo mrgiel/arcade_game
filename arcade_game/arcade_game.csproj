@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="coin.png" />
     <None Remove="Image\istockphoto-1182467404-170667a.jpg" />
+    <None Remove="Image\pngwing.com.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,7 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="coin.png" />
     <Resource Include="Image\istockphoto-1182467404-170667a.jpg" />
+    <Resource Include="Image\pngwing.com.png" />
   </ItemGroup>
 
 </Project>
