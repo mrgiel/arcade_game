@@ -22,12 +22,17 @@
                    Width="50"
                    Canvas.Left="65"
                    Canvas.Top="577" />
-        <Rectangle x:Name="platoform2" 
+        <Rectangle x:Name="platform1" 
                    Tag="platform" 
                    Fill="Yellow" 
                    Height="50" Width="300" 
                    Canvas.Left="100" Canvas.Top="500"/>
-        <Rectangle x:Name="platoform1" 
+        <Rectangle x:Name="platform2" 
+                   Tag="platform" 
+                   Fill="Green" 
+                   Height="50" Width="300" 
+                   Canvas.Left="90" Canvas.Top="367"/>
+        <Rectangle x:Name="platform" 
                    Tag="platform" 
                    Fill="Orange" 
                    Height="50" Width="300" 

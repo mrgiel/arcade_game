@@ -29,13 +29,13 @@ namespace WpfApp1
         public string player2 { get; set; }
         public int highscore { get; set; }
 
-        private bool moveUp2 = false, moveLeft2 = false, moveRight2 = false;
-        private bool moveUp1 = false, moveLeft1 = false, moveRight1 = false;
-        private bool spaceLeft1 = true, spaceRight1 = true, spaceUp1 = true;
+        private bool moveUp2, moveLeft2, moveRight2;
+        private bool moveUp1, moveLeft1, moveRight1;
 
-        private bool spaceLeft2 = true, spaceRight2 = true, spaceUp2 = true;
+        private bool spaceLeft1, spaceRight1, spaceUp1;
+        private bool spaceLeft2, spaceRight2, spaceUp2;
 
-        private bool Gravity1 = true, Gravity2 = true;
+        private bool Gravity1, Gravity2;
         private DispatcherTimer gameTimer = new DispatcherTimer();
 
         const int playerSpeed = 2;
@@ -73,10 +73,10 @@ namespace WpfApp1
                 moveUp2 = true;
 
             // Dit moet nog aangepast worden
-            //if (e.Key == Key.K)
-            //    Win();
-            //if (e.Key == Key.L)
-            //    Lose();
+            if (e.Key == Key.K)
+                Win();
+            if (e.Key == Key.L)
+                Lose();
         }
         private void game_KeyUp(object sender, KeyEventArgs e)
         {
@@ -98,24 +98,34 @@ namespace WpfApp1
 
         private void GameEngine(object sender, EventArgs e)
         {
-            if (moveUp1 == true && Canvas.GetTop(Player1) > 0 && spaceUp1 == true)
+            if (moveUp1 && Canvas.GetTop(Player1) > 0 && spaceUp1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - playerSpeed);
-            if (moveRight1 == true && Canvas.GetLeft(Player1) + (Player1.Width * 1.5) < 510 && spaceRight1 == true)
+            if (moveRight1 && Canvas.GetLeft(Player1) + (Player1.Width * 1.5) < 510 && spaceRight1)
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + playerSpeed);
-            if (moveLeft1 == true && Canvas.GetLeft(Player1) > 0 && spaceLeft1 == true)
+            if (moveLeft1 && Canvas.GetLeft(Player1) > 0 && spaceLeft1)
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) - playerSpeed);
             if (Gravity1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + GravitySpeed);
 
-            if (moveUp2 == true && Canvas.GetTop(Player2) > 0 && spaceUp2 == true)
+            if (moveUp2&& Canvas.GetTop(Player2) > 0 && spaceUp2)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) - playerSpeed);
-            if (moveRight2 == true && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 510 && spaceRight2 == true)
+            if (moveRight2  && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 510 && spaceRight2)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) + playerSpeed);
-            if (moveLeft2 == true && Canvas.GetLeft(Player2) > 0 && spaceLeft2 == true)
+            if (moveLeft2 && Canvas.GetLeft(Player2) > 0 && spaceLeft2)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) - playerSpeed);
             if (Gravity2)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) + GravitySpeed);
 
+
+            Gravity1 = true;
+            spaceRight1 = true;
+            spaceLeft1 = true;
+            spaceUp1 = true;
+
+            Gravity2 = true;
+            spaceRight2 = true;
+            spaceLeft2 = true;
+            spaceUp2 = true;
 
             foreach (var x in game.Children.OfType<Rectangle>())
             {
@@ -146,13 +156,7 @@ namespace WpfApp1
                             spaceUp1 = false;
                         }
                     }
-                    else
-                    {
-                        Gravity1 = true;
-                        spaceRight1 = true;
-                        spaceLeft1 = true;
-                        spaceUp1 = true;
-                    }
+
                     if (player2HitBox.IntersectsWith(platformHitBox))
                     {
                         if (Canvas.GetTop(Player2) < (Canvas.GetTop(x) - (Player2.Height - 1)))
@@ -172,31 +176,12 @@ namespace WpfApp1
                             spaceUp2 = false;
                         }
                     }
-                    else
-                    {
-                        Gravity2 = true;
-                        spaceRight2 = true;
-                        spaceLeft2 = true;
-                        spaceUp2 = true;
-                    }
                 }
             }
         }
 
         
-        
-
-
-        public void colision1()
-        {
-            
-        }
-        public void colision2()
-        {
-            Gravity2 = false;
-        }
-
-        /// <summary>
+              /// <summary>
             /// Zorgt er voor dat je naar het win scherm gaat.Stuurt spelerdata (highscore en namen) mee
             /// </summary>
             private void Win()
