@@ -41,10 +41,12 @@ namespace WpfApp1
         const int playerSpeed = 2;
         const int GravitySpeed = 1;
 
+        
+
         public Game(int highscore, string teamname, string player1, string player2)
         {
             InitializeComponent();
-            gameTimer.Interval = TimeSpan.FromMilliseconds(20);
+            gameTimer.Interval = TimeSpan.FromMilliseconds(10);
             gameTimer.Tick += GameEngine;
             gameTimer.Start();
             game.Focus();
@@ -194,27 +196,26 @@ namespace WpfApp1
                         Lose();
                     }
                 }
-                if ((string)x.Tag == "door")
-                {
-                    bool player1door = false;
-                    bool player2door = false;
+            }
+            bool player1door = false;
+            bool player2door = false;
 
-                    Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
-                    Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
-                    Rect doorHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
-                    if (player1HitBox.IntersectsWith(doorHitBox))
-                    {
-                        player1door = true;
-                    }
-                    if (player2HitBox.IntersectsWith(doorHitBox))
-                    {
-                        player2door = true;
-                    }
-                    if (player1door && player2door)
-                    {
-                        Win();
-                    }
-                }
+            Rect Player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
+            Rect Player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
+            Rect doorbleuHitBox = new Rect(Canvas.GetLeft(doorbleu), Canvas.GetTop(doorbleu), doorbleu.Width, doorbleu.Height);
+            Rect doorredHitBox = new Rect(Canvas.GetLeft(doorred), Canvas.GetTop(doorred), doorred.Width, doorred.Height);
+
+            if (Player1HitBox.IntersectsWith(doorbleuHitBox))
+            {
+                player1door = true;
+            }
+            if (Player2HitBox.IntersectsWith(doorredHitBox))
+            {
+                player2door = true;
+            }
+            if (player1door && player2door)
+            {
+                Win();
             }
         }
 
