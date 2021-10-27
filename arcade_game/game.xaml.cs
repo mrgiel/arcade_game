@@ -129,6 +129,8 @@ namespace WpfApp1
             spaceLeft2 = true;
             spaceUp2 = true;
 
+            knopdown = false;
+
             Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
             Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
 
@@ -184,12 +186,13 @@ namespace WpfApp1
                 {
                     x.Stroke = Brushes.Black;
 
-                    if(knopdown = true)
+                    x.Visibility = Visibility.Visible;
+
+                    if (knopdown == true)
                     {
                         x.Visibility = Visibility.Hidden;
                     }
-
-                    if (x.IsVisible)
+                    if (x.IsVisible) 
                     {
                         Rect platformHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
@@ -234,20 +237,21 @@ namespace WpfApp1
                         }
 
                     }
-                    if ((string)x.Tag == "knop")
-                    {
-                        Rect knopHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+                }
+                if ((string)x.Tag == "knop")
+                {
+                    Rect knopHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
-                        if (player1HitBox.IntersectsWith(knopHitBox))
-                        {
-                            knopdown = true;
-                        }
-                        if (player2HitBox.IntersectsWith(knopHitBox))
-                        {
-                            knopdown = true;
-                        }
+                    if (player1HitBox.IntersectsWith(knopHitBox))
+                    {
+                        knopdown = true;
+                    }
+                    if (player2HitBox.IntersectsWith(knopHitBox))
+                    {
+                        knopdown = true;
                     }
                 }
+
             }
             foreach (var x in game.Children.OfType<Image>())
             {
