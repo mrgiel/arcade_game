@@ -194,10 +194,6 @@ namespace WpfApp1
         public void colision2()
         {
             Gravity2 = false;
-
-        public void colision2()
-        {
-            Gravity2 = false;
         }
 
         /// <summary>
