@@ -180,8 +180,6 @@ namespace WpfApp1
             }
         }
 
-        
-              /// <summary>
             /// Zorgt er voor dat je naar het win scherm gaat.Stuurt spelerdata (highscore en namen) mee
             /// </summary>
             private void Win()
