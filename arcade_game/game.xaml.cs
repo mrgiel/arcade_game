@@ -180,6 +180,7 @@ namespace WpfApp1
                 }
             }
         }
+
         public void colision1()
         {
             
@@ -187,6 +188,12 @@ namespace WpfApp1
         public void colision2()
         {
             Gravity2 = false;
+
+        public void colision2()
+        {
+            Gravity2 = false;
+        }
+
 
         /// <summary>
         /// Zorgt er voor dat je naar het win scherm gaat. Stuurt spelerdata (highscore en namen) mee
