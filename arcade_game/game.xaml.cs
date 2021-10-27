@@ -38,7 +38,7 @@ namespace WpfApp1
         private bool Gravity1, Gravity2;
         private DispatcherTimer gameTimer = new DispatcherTimer();
 
-        const int playerSpeed = 2;
+        const int playerSpeed = 5;
         const int GravitySpeed = 1;
 
         public Game(int highscore, string teamname, string player1, string player2)
@@ -98,6 +98,7 @@ namespace WpfApp1
 
         private void GameEngine(object sender, EventArgs e)
         {
+            score.Content = highscore;
             if (moveUp1 && Canvas.GetTop(Player1) > 0 && spaceUp1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - playerSpeed);
             if (moveRight1 && Canvas.GetLeft(Player1) + (Player1.Width * 1.5) < 815 && spaceRight1)
@@ -107,7 +108,7 @@ namespace WpfApp1
             if (Gravity1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + GravitySpeed);
 
-            if (moveUp2&& Canvas.GetTop(Player2) > 0 && spaceUp2)
+            if (moveUp2 && Canvas.GetTop(Player2) > 0 && spaceUp2)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) - playerSpeed);
             if (moveRight2  && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 815 && spaceRight2)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) + playerSpeed);
@@ -178,6 +179,7 @@ namespace WpfApp1
                     }
                 }
             }
+
             foreach (var x in game.Children.OfType<Image>())
             {
                 if ((string)x.Tag == "spike")
@@ -215,6 +217,22 @@ namespace WpfApp1
                         Win();
                     }
                 }
+
+            foreach (Image y in game.Children.OfType<Image>())
+            {
+                if ((string)y.Tag == "coin")
+                {
+                    Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
+                    Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
+                    Rect coinHitBox = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+                    if (player1HitBox.IntersectsWith(coinHitBox) || player2HitBox.IntersectsWith(coinHitBox))
+                        if(y.IsVisible)
+                            {
+                                y.Visibility = Visibility.Hidden;
+                                highscore += 1;
+                            }
+                }
+
             }
         }
 
