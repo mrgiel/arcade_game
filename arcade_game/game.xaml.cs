@@ -181,6 +181,7 @@ namespace WpfApp1
                     }
                 }
             }
+
             foreach (var x in game.Children.OfType<Image>())
             {
                 if ((string)x.Tag == "spike")
@@ -208,22 +209,38 @@ namespace WpfApp1
             bool player1door = false;
             bool player2door = false;
 
-            Rect Player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
-            Rect Player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
-            Rect doorbleuHitBox = new Rect(Canvas.GetLeft(doorbleu), Canvas.GetTop(doorbleu), doorbleu.Width, doorbleu.Height);
-            Rect doorredHitBox = new Rect(Canvas.GetLeft(doorred), Canvas.GetTop(doorred), doorred.Width, doorred.Height);
+                    Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
+                    Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
+                    Rect doorHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+                    if (player1HitBox.IntersectsWith(doorHitBox))
+                    {
+                        player1door = true;
+                    }
+                    if (player2HitBox.IntersectsWith(doorHitBox))
+                    {
+                        player2door = true;
+                    }
+                    if (player1door && player2door)
+                    {
+                        Win();
+                    }
+                }
 
-            if (Player1HitBox.IntersectsWith(doorbleuHitBox))
+            foreach (Image y in game.Children.OfType<Image>())
             {
-                player1door = true;
-            }
-            if (Player2HitBox.IntersectsWith(doorredHitBox))
-            {
-                player2door = true;
-            }
-            if (player1door && player2door)
-            {
-                Win();
+                if ((string)y.Tag == "coin")
+                {
+                    Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
+                    Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
+                    Rect coinHitBox = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+                    if (player1HitBox.IntersectsWith(coinHitBox) || player2HitBox.IntersectsWith(coinHitBox))
+                        if(y.IsVisible)
+                            {
+                                y.Visibility = Visibility.Hidden;
+                                highscore += 1;
+                            }
+                }
+
             }
         }
 
