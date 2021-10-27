@@ -46,7 +46,7 @@ namespace arcade_game
         /// <param name="player2"></param>
         private void AddHighscoreToDatabase(int highscore, string teamname, string player1, string player2)
         {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\gbuss\\Source\\Repos\\mrgiel\\arcade_game\\arcade_game\\Data\\Database1.mdf\";Integrated Security=True";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\aron\\source\\repos\\mrgiel\\arcade_game\\arcade_game\\Data\\Database1.mdf\";Integrated Security=True";
             string query = "INSERT INTO [Game] ([Teamnaam],[Speler1],[Speler2],[Highscore]) VALUES ('" + teamname + "', '" + player1 + "','" + player2 + "','" + highscore + "')";
 
             SqlConnection connection = new SqlConnection(connectionString);
