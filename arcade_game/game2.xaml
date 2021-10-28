@@ -12,15 +12,15 @@
                    Tag="player"
                    Height="50"
                    Width="50"
-                   Canvas.Left="645"
-                   Canvas.Top="381"/>
+                   Canvas.Left="755"
+                   Canvas.Top="534"/>
         <Rectangle x:Name="Player2"
                    Fill="red"
                    Tag="player"
                    Height="50"
                    Width="50"
-                   Canvas.Left="445"
-                   Canvas.Top="280" />
+                   Canvas.Left="690"
+                   Canvas.Top="534" />
         <Rectangle x:Name="platform1" 
                    Tag="platform" 
                    Fill="Black" 
@@ -39,11 +39,11 @@
         <Rectangle x:Name="platform5" 
                    Tag="platform" 
                    Fill="Black" 
-                   Height="50" Width="824" Canvas.Top="597"/>
+                   Height="50" Width="824" Canvas.Top="589" Canvas.Left="41"/>
         <Image     Source="/Image/spikes.PNG" 
                    x:Name="spike1" 
                    Tag ="spike" 
-                   Canvas.Left="537" Canvas.Top="572" 
+                   Canvas.Left="545" Canvas.Top="564" 
                    Height="25" Width="30" />
         <Image     Source="/Image/spikes.PNG" 
                    x:Name="spike2" 
@@ -69,7 +69,7 @@
                    Tag="knop"
                    Fill="Pink"
                    Height="6" Width="50" 
-                   Canvas.Left="405" Canvas.Top="591"/>
+                   Canvas.Left="405" Canvas.Top="583"/>
         <Rectangle x:Name="knop2"
                    Tag="knop"
                    Fill="Pink"
