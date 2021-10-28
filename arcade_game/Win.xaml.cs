@@ -27,15 +27,22 @@ namespace arcade_game
         public string player2 { get; set; }
         public int highscore { get; set; }
 
+
         public Win(int highscore, string teamname, string player1, string player2)
         {
             this.highscore = highscore;
             this.teamname = teamname;
             this.player1 = player1;
             this.player2 = player2;
- 
             InitializeComponent();
+            setName();
             AddHighscoreToDatabase(highscore, teamname, player1, player2);
+        }
+
+        private void setName()
+        {
+            p1.Content = player1;
+            p2.Content = player2;
         }
 
         /// <summary>
