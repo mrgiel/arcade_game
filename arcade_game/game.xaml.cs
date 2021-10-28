@@ -136,8 +136,8 @@ namespace WpfApp1
                 moveUp2 = false;
             }
 
-            score.Content = highscore;
-            klok.Content = seconde;
+            score.Content = "Score: " + highscore;
+            klok.Content = "Tijd over: " + seconde;
 
             if (moveUp1 && Canvas.GetTop(Player1) > 0 && spaceUp1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - playerSpeed);
@@ -384,6 +384,19 @@ namespace WpfApp1
         private void QuitGame(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            StartGame startgame = new StartGame();
+            startgame.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
+        }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
         }
     }
 }
