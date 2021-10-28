@@ -78,6 +78,11 @@ namespace arcade_game
         {
             p1.Content = player1;
             p2.Content = player2;
+            p1.Content = player1;
+            p2.Content = player2;
+            hs.Content = highscore;
+            sp1.Content = scoreplayer1;
+            sp2.Content = scoreplayer2;
         }
         private void QuitGame(object sender, EventArgs e)
         {
