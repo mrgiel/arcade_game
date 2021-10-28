@@ -13,29 +13,29 @@
                    Tag="player"
                    Height="50"
                    Width="50"
-                   Canvas.Left="474"
-                   Canvas.Top="158" RenderTransformOrigin="0.501,0.539"/>
+                   Canvas.Left="28"
+                   Canvas.Top="31" RenderTransformOrigin="0.501,0.539"/>
         <Rectangle x:Name="Player2"
                    Fill="red"
                    Tag="player"
                    Height="49"
 
                    Width="50"
-                   Canvas.Left="286"
-                   Canvas.Top="17" />
+                   Canvas.Left="99"
+                   Canvas.Top="31" />
         <Rectangle x:Name="platform1" 
                    Tag="platform" 
-                   Fill="Yellow" 
+                   Fill="Black" 
                    Height="50" Width="550" 
                    Canvas.Left="501" Canvas.Top="86"/>
         <Rectangle x:Name="platform2" 
                    Tag="platform" 
-                   Fill="Green" 
+                   Fill="Black" 
                    Height="50" Width="500" 
-                   Canvas.Left="335" Canvas.Top="229"/>
+                   Canvas.Left="301" Canvas.Top="230"/>
         <Rectangle x:Name="platform" 
                    Tag="platform" 
-                   Fill="Orange" 
+                   Fill="Black" 
                    Height="50" Width="600" 
                    Canvas.Left="-201" Canvas.Top="86"/>
         <Rectangle x:Name="platform5" 
@@ -46,13 +46,13 @@
         <Image     Source="/Image/spikes.PNG" 
                    x:Name="spike1" 
                    Tag ="spike" 
-                   Canvas.Left="605" Canvas.Top="188" 
-                   Height="41" Width="50" />
+                   Canvas.Left="528" Canvas.Top="353" 
+                   Height="25" Width="30" />
         <Image     Source="/Image/spikes.PNG" 
                    x:Name="spike2" 
                    Tag ="spike" 
-                   Canvas.Left="555" Canvas.Top="188" 
-                   Height="41" Width="50" />
+                   Canvas.Left="551" Canvas.Top="205" 
+                   Height="25" Width="30" />
         <Image     Source="/Image/doorbleu.PNG" 
                    x:Name ="doorbleu"
                    Tag ="door"
@@ -67,7 +67,7 @@
                    Tag="knop"
                    Fill="Pink"
                    Height="6" Width="50" 
-                   Canvas.Left="474" Canvas.Top="223"/>
+                   Canvas.Left="608" Canvas.Top="223"/>
         <Rectangle x:Name="knop2"
                    Tag="knop"
                    Fill="Pink"
@@ -77,8 +77,29 @@
                    Tag="opstakel"
                    Fill="Pink"
                    Height="50" Width="102" 
-                   Canvas.Left="399" Canvas.Top="87"/>
-
+                   Canvas.Left="399" Canvas.Top="86"/>
+        <Label     x:Name="score" Width="100"/>
+        <Label     x:Name="klok" Width="100" Canvas.Left="100"/>
+        <Image     Tag="coin" 
+                   Height="25" Canvas.Left="642" Stretch="Fill" 
+                   Source="Image/pngwing.com.png" 
+                   Canvas.Top="56" Width="25"/>
+        <Image     Tag="coin" 
+                   Height="25" Canvas.Left="674" Stretch="Fill" 
+                   Source="/Image/pngwing.com.png" 
+                   Canvas.Top="56" Width="25"/>
+        <Image     Tag="coin" 
+                   Height="25" Canvas.Left="706" Stretch="Fill" 
+                   Source="/Image/pngwing.com.png" 
+                   Canvas.Top="56" Width="25"/>
+        <Image     Tag="coin" 
+                   Height="25" Canvas.Left="125" Stretch="Fill" 
+                   Source="/Image/pngwing.com.png" 
+                   Canvas.Top="326" Width="25"/>
+        <Image     Tag="coin" 
+                   Height="24" Canvas.Left="608" Stretch="Fill" 
+                   Source="/Image/pngwing.com.png" 
+                   Canvas.Top="314" Width="25"/>
 
     </Canvas>
 </Window>

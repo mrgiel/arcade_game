@@ -29,6 +29,8 @@ namespace WpfApp1
         public string player2 { get; set; }
         public int highscore { get; set; }
 
+
+
         private bool moveUp2, moveLeft2, moveRight2;
         private bool moveUp1, moveLeft1, moveRight1;
 
@@ -38,15 +40,20 @@ namespace WpfApp1
         private bool Gravity1, Gravity2;
         private DispatcherTimer gameTimer = new DispatcherTimer();
 
-        const int playerSpeed = 5;
+        const int playerSpeed = 2;
         const int GravitySpeed = 1;
 
         private bool knopdown = false;
 
+        private int seconde = 30;
+        private int teller;
+
+        int jumptime1, jumptime2;
+
         public Game(int highscore, string teamname, string player1, string player2)
         {
             InitializeComponent();
-            gameTimer.Interval = TimeSpan.FromMilliseconds(20);
+            gameTimer.Interval = TimeSpan.FromMilliseconds(5);
             gameTimer.Tick += GameEngine;
             gameTimer.Start();
             game.Focus();
@@ -100,9 +107,34 @@ namespace WpfApp1
 
         private void GameEngine(object sender, EventArgs e)
         {
+            teller++;
+
+            if (teller >= 200)
+            {
+                seconde = seconde - 1;
+                teller = 0;
+            }
+
+            if (seconde == 0)
+            {
+                Lose();
+            }
+
+            if (jumptime1 >= 40)
+            {
+                moveUp1 = false;
+            }
+            if (jumptime2 >= 40)
+            {
+                moveUp2 = false;
+            }
+
             score.Content = highscore;
+            klok.Content = seconde;
+
             if (moveUp1 && Canvas.GetTop(Player1) > 0 && spaceUp1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - playerSpeed);
+                jumptime1++;
             if (moveRight1 && Canvas.GetLeft(Player1) + (Player1.Width * 1.5) < 815 && spaceRight1)
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + playerSpeed);
             if (moveLeft1 && Canvas.GetLeft(Player1) > 0 && spaceLeft1)
@@ -112,7 +144,8 @@ namespace WpfApp1
 
             if (moveUp2 && Canvas.GetTop(Player2) > 0 && spaceUp2)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) - playerSpeed);
-            if (moveRight2  && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 815 && spaceRight2)
+                jumptime2++;
+            if (moveRight2 && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 815 && spaceRight2)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) + playerSpeed);
             if (moveLeft2 && Canvas.GetLeft(Player2) > 0 && spaceLeft2)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) - playerSpeed);
@@ -140,22 +173,25 @@ namespace WpfApp1
                 if ((string)x.Tag == "platform")
                 {
                     x.Stroke = Brushes.Black;
-                    
+
                     Rect platformHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
                     if (player1HitBox.IntersectsWith(platformHitBox))
                     {
-                        if (Canvas.GetTop(Player1) < (Canvas.GetTop(x) - (Player1.Height - 1)))
+                        if (Canvas.GetTop(Player1) < (Canvas.GetTop(x) - (Player1.Height - 2)))
                         {
                             Gravity1 = false;
+                            jumptime1 = 0;
                         }
                         if (Canvas.GetLeft(Player1) == (Canvas.GetLeft(x) - Player1.Width + 1) && Canvas.GetTop(Player1) > (Canvas.GetTop(x) - Player1.Height))
                         {
                             spaceRight1 = false;
+                            jumptime1 = 0;
                         }
                         if (Canvas.GetLeft(Player1) == (Canvas.GetLeft(x) + x.Width - 1) && Canvas.GetTop(Player1) > (Canvas.GetTop(x) - Player1.Height))
                         {
                             spaceLeft1 = false;
+                            jumptime1 = 0;
                         }
                         if (Canvas.GetTop(Player1) == Canvas.GetTop(x) + x.Height - 1)
                         {
@@ -168,14 +204,17 @@ namespace WpfApp1
                         if (Canvas.GetTop(Player2) < (Canvas.GetTop(x) - (Player2.Height - 1)))
                         {
                             Gravity2 = false;
+                            jumptime2 = 0;
                         }
-                        if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) - Player2.Width + 1) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
+                        if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) - Player2.Width + 2) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
                         {
                             spaceRight2 = false;
+                            jumptime2 = 0;
                         }
-                        if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) + x.Width - 1) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
+                        if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) + x.Width - 2) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
                         {
                             spaceLeft2 = false;
+                            jumptime2 = 0;
                         }
                         if (Canvas.GetTop(Player2) == Canvas.GetTop(x) + x.Height - 1)
                         {
@@ -193,7 +232,7 @@ namespace WpfApp1
                     {
                         x.Visibility = Visibility.Hidden;
                     }
-                    if (x.IsVisible) 
+                    if (x.IsVisible)
                     {
                         Rect platformHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
@@ -258,7 +297,7 @@ namespace WpfApp1
             {
                 if ((string)x.Tag == "spike")
                 {
-                    Rect spikeHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+                    Rect spikeHitBox = new Rect((Canvas.GetLeft(x) + 2), (Canvas.GetTop(x) + 13), (x.Width - 4), x.Height);
                     if (player1HitBox.IntersectsWith(spikeHitBox))
                     {
                         Lose();
@@ -266,6 +305,19 @@ namespace WpfApp1
                     if (player2HitBox.IntersectsWith(spikeHitBox))
                     {
                         Lose();
+                    }
+                }
+                if ((string)x.Tag == "coin")
+                {
+                    Rect coinHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+                    if (player1HitBox.IntersectsWith(coinHitBox) || player2HitBox.IntersectsWith(coinHitBox))
+                    {
+                        if (x.IsVisible)
+                        {
+
+                            x.Visibility = Visibility.Hidden;
+                            highscore += 1;
+                        }
                     }
                 }
             }
@@ -288,40 +340,6 @@ namespace WpfApp1
             if (player1door && player2door)
             {
                 Win();
-            }
-        }
-                    Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
-                    Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
-                    Rect doorHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
-                    if (player1HitBox.IntersectsWith(doorHitBox))
-                    {
-                        player1door = true;
-                    }
-                    if (player2HitBox.IntersectsWith(doorHitBox))
-                    {
-                        player2door = true;
-                    }
-                    if (player1door && player2door)
-                    {
-                        Win();
-                    }
-                }
-
-            foreach (Image y in game.Children.OfType<Image>())
-            {
-                if ((string)y.Tag == "coin")
-                {
-                    Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
-                    Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
-                    Rect coinHitBox = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
-                    if (player1HitBox.IntersectsWith(coinHitBox) || player2HitBox.IntersectsWith(coinHitBox))
-                        if(y.IsVisible)
-                            {
-                                y.Visibility = Visibility.Hidden;
-                                highscore += 1;
-                            }
-                }
-
             }
         }
 
@@ -352,4 +370,3 @@ namespace WpfApp1
         }
     }
 }
-
