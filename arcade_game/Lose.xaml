@@ -29,7 +29,7 @@
                 <ImageBrush/>
             </Button.Background>
         </Button>
-        <Button Content="Opties" HorizontalAlignment="Left" Margin="482,356,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="36" FontWeight="Bold" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" Height="52" Width="166" Click="Opties">
+        <Button Content="Highscore" HorizontalAlignment="Left" Margin="482,356,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="36" FontWeight="Bold" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" Height="52" Width="182" Click="Highscore">
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
