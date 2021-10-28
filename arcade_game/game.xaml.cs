@@ -359,7 +359,6 @@ namespace WpfApp1
                 if ((string)x.Tag == "spike")
                 {
                     Rect spikeHitBox = new Rect((Canvas.GetLeft(x) + 2), (Canvas.GetTop(x) + 13), (x.Width - 4), x.Height);
-                    Rect spikeHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
                     if (player1HitBox.IntersectsWith(spikeHitBox))
                     {
                         Lose();
