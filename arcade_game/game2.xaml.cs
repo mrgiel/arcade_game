@@ -204,12 +204,12 @@ namespace arcade_game
                             Gravity2 = false;
                             jumptime2 = 0;
                         }
-                        if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) - Player2.Width + 2) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
+                        if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) - Player2.Width + 1) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
                         {
                             spaceRight2 = false;
                             jumptime2 = 0;
                         }
-                        if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) + x.Width - 2) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
+                        if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) + x.Width - 1) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
                         {
                             spaceLeft2 = false;
                             jumptime2 = 0;
@@ -224,11 +224,11 @@ namespace arcade_game
                 {
                     x.Stroke = Brushes.Black;
 
-                    x.Visibility = Visibility.Visible;
+                    x.Visibility = Visibility.Hidden;
 
                     if (knopdown == true)
                     {
-                        x.Visibility = Visibility.Hidden;
+                        x.Visibility = Visibility.Visible;
                     }
                     if (x.IsVisible)
                     {
@@ -239,14 +239,17 @@ namespace arcade_game
                             if (Canvas.GetTop(Player1) < (Canvas.GetTop(x) - (Player1.Height - 1)))
                             {
                                 Gravity1 = false;
+                                jumptime1 = 0;
                             }
                             if (Canvas.GetLeft(Player1) == (Canvas.GetLeft(x) - Player1.Width + 1) && Canvas.GetTop(Player1) > (Canvas.GetTop(x) - Player1.Height))
                             {
                                 spaceRight1 = false;
+                                jumptime1 = 0;
                             }
                             if (Canvas.GetLeft(Player1) == (Canvas.GetLeft(x) + x.Width - 1) && Canvas.GetTop(Player1) > (Canvas.GetTop(x) - Player1.Height))
                             {
                                 spaceLeft1 = false;
+                                jumptime1 = 0;
                             }
                             if (Canvas.GetTop(Player1) == Canvas.GetTop(x) + x.Height - 1)
                             {
@@ -259,14 +262,17 @@ namespace arcade_game
                             if (Canvas.GetTop(Player2) < (Canvas.GetTop(x) - (Player2.Height - 1)))
                             {
                                 Gravity2 = false;
+                                    jumptime2 = 0;
                             }
                             if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) - Player2.Width + 1) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
                             {
                                 spaceRight2 = false;
+                                jumptime2 = 0;
                             }
                             if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) + x.Width - 1) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
                             {
                                 spaceLeft2 = false;
+                                jumptime2 = 0;
                             }
                             if (Canvas.GetTop(Player2) == Canvas.GetTop(x) + x.Height - 1)
                             {

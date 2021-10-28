@@ -12,15 +12,15 @@
                    Tag="player"
                    Height="50"
                    Width="50"
-                   Canvas.Left="28"
-                   Canvas.Top="31"/>
+                   Canvas.Left="636"
+                   Canvas.Top="162"/>
         <Rectangle x:Name="Player2"
                    Fill="red"
                    Tag="player"
-                   Height="49"
+                   Height="50"
                    Width="50"
-                   Canvas.Left="99"
-                   Canvas.Top="31" />
+                   Canvas.Left="436"
+                   Canvas.Top="61" />
         <Rectangle x:Name="platform1" 
                    Tag="platform" 
                    Fill="Black" 
@@ -54,18 +54,23 @@
         <Image     Source="/Image/doorbleu.PNG" 
                    x:Name ="doorbleu"
                    Tag ="door"
-                   Canvas.Left="756" Canvas.Top="297" 
+                   Canvas.Left="757" Canvas.Top="3" 
                    Height="83" Width="38" />
         <Image     Source="/Image/doorred.PNG" 
                    x:Name ="doorred"
                    Tag ="door"
-                   Canvas.Left="680" Canvas.Top="297"
+                   Canvas.Left="12" Canvas.Top="4"
                    Height="83" Width="38" />
         <Rectangle x:Name="knop1"
                    Tag="knop"
                    Fill="Pink"
                    Height="6" Width="50" 
                    Canvas.Left="608" Canvas.Top="223"/>
+        <Rectangle x:Name="knop3"
+                   Tag="knop"
+                   Fill="Pink"
+                   Height="6" Width="50" 
+                   Canvas.Left="396" Canvas.Top="372"/>
         <Rectangle x:Name="knop2"
                    Tag="knop"
                    Fill="Pink"
@@ -74,8 +79,15 @@
         <Rectangle x:Name="opstakel1"
                    Tag="opstakel"
                    Fill="Pink"
-                   Height="50" Width="102" 
-                   Canvas.Left="399" Canvas.Top="86"/>
+                   Height="100" Width="50" 
+                   Canvas.Left="371" Canvas.Top="112"/>
+        <Rectangle x:Name="opstakel2"
+                   Tag="opstakel"
+                   Fill="Pink"
+                   Height="100" Width="50" 
+                   Canvas.Left="251" Canvas.Top="238"/>
+
+
         <Label     x:Name="score" Width="100"/>
         <Label     x:Name="klok" Width="100" Canvas.Left="100"/>
         <Image     Tag="coin" 
