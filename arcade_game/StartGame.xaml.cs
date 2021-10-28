@@ -19,7 +19,8 @@ namespace arcade_game
         public string teamname;
         public string player1;
         public string player2;
-        public int highscore = 10;
+ 
+        public int highscore = 0;
 
         public StartGame()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -34,6 +35,7 @@ namespace arcade_game
             this.player2 = player2;
           
             InitializeComponent();
+            setName();
             AddHighscoreToDatabase(highscore, teamname, player1, player2);
         }
 
@@ -46,7 +48,8 @@ namespace arcade_game
         /// <param name="player2"></param>
         private void AddHighscoreToDatabase(int highscore, string teamname, string player1, string player2)
         {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\aron\\source\\repos\\mrgiel\\arcade_game\\arcade_game\\Data\\Database1.mdf\"; Integrated Security=True";
+            string connectionString = ConfigurationManager.ConnectionStrings
+                ["MyConnectionString"].ConnectionString; ; ;
             string query = "INSERT INTO [Game] ([Teamnaam],[Speler1],[Speler2],[Highscore]) VALUES ('" + teamname + "', '" + player1 + "','" + player2 + "','" + highscore + "')";
 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -67,6 +70,11 @@ namespace arcade_game
             }
         }
 
+        private void setName()
+        {
+            p1.Content = player1;
+            p2.Content = player2;
+        }
         private void QuitGame(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
@@ -86,10 +94,10 @@ namespace arcade_game
             this.Visibility = Visibility.Hidden;
         }
 
-        private void Opties(object sender, RoutedEventArgs e)
+        private void Highscore(object sender, RoutedEventArgs e)
         {
-            Window1 options = new Window1();
-            options.Visibility = Visibility.Visible;
+            Highscore highscore = new Highscore();
+            highscore.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
         }
     }
