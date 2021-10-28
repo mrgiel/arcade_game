@@ -63,9 +63,11 @@ namespace arcade_game
         /// <param name="player2"></param>
         private void AddHighscoreToDatabase(int highscore, string teamname, string player1, string player2)
         {
+
             //connectionString haalt hij op bij App.config. Op deze manier kan het gedeelt worden via git en hoef je niet elke keer de string aan te passen.
             string connectionString = ConfigurationManager.ConnectionStrings
                 ["MyConnectionString"].ConnectionString; ;
+
             string query = "INSERT INTO [Game] ([Teamnaam],[Speler1],[Speler2],[Highscore]) VALUES ('" + teamname + "', '" + player1 + "','" + player2 + "','" + highscore + "')";
 
             SqlConnection connection = new SqlConnection(connectionString);
