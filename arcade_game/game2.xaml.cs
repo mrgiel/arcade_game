@@ -29,6 +29,8 @@ namespace arcade_game
         public string player2 { get; set; }
         public int highscore { get; set; }
         public int seconde { get; set; }
+        public int scoreplayer1 { get; set; }
+        public int scoreplayer2 { get; set; }
 
         private bool moveUp2, moveLeft2, moveRight2;
         private bool moveUp1, moveLeft1, moveRight1;
@@ -49,8 +51,7 @@ namespace arcade_game
 
         private int jumptime1, jumptime2;
 
-        private int scoreplayer1, scoreplayer2;
-        public Game2(int highscore, string teamname, string player1, string player2, int seconde)
+        public Game2(int highscore, string teamname, string player1, string player2, int seconde, int scoreplayer1, int scoreplayer2)
         {
             InitializeComponent();
             gameTimer.Interval = TimeSpan.FromMilliseconds(5);
@@ -63,6 +64,8 @@ namespace arcade_game
             this.teamname = teamname;
             this.player1 = player1;
             this.player2 = player2;
+            this.scoreplayer1 = scoreplayer1;
+            this.scoreplayer2 = scoreplayer2;
         }
         private void game2_KeyDown(object sender, KeyEventArgs e)
         {
@@ -358,7 +361,7 @@ namespace arcade_game
 
         private void Win()
         {
-            Win won = new Win(highscore, teamname, player1, player2);
+            Win won = new Win(highscore, teamname, player1, player2, scoreplayer1, scoreplayer2);
             won.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
             gameTimer.Stop();
@@ -367,7 +370,7 @@ namespace arcade_game
         
         private void Lose()
         {
-            Lose lost = new Lose(highscore, teamname, player1, player2);
+            Lose lost = new Lose(highscore, teamname, player1, player2, scoreplayer1, scoreplayer2);
             lost.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
             gameTimer.Stop();

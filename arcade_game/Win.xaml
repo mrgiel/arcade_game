@@ -21,9 +21,15 @@
         <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="151,297,443,106">
             <Label x:Name="p2" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF9F9F9" FontFamily="Impact" FontWeight="Bold" FontSize="36" Height="54"/>
         </Border>
-        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="382,164,151,239"/>
-        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="382,229,151,174"/>
-        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="382,297,151,106"/>
+        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="382,164,151,239">
+            <Label x:Name="hs" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF9F9F9" FontFamily="Impact" FontWeight="Bold" FontSize="36" Height="54"/>
+        </Border>
+        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="382,229,151,174">
+            <Label x:Name="sp1" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF9F9F9" FontFamily="Impact" FontWeight="Bold" FontSize="36" Height="54"/>
+        </Border>
+        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="382,297,151,106">
+            <Label x:Name="sp2" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF9F9F9" FontFamily="Impact" FontWeight="Bold" FontSize="36" Height="54"/>
+        </Border>
         <Button Content="Start" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.951,0.829" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" Foreground="#FFF9F9F9" FontFamily="Impact" Width="120" Click="HomeScreen">
             <Button.Background>
                 <ImageBrush/>
