@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +22,6 @@
   <ItemGroup>
     <Resource Include="Image\doorbleu.PNG" />
     <Resource Include="Image\spikes.PNG" />
-    <None Remove="coin.png" />
     <None Remove="Image\istockphoto-1182467404-170667a.jpg" />
     <None Remove="Image\pngwing.com.png" />
   </ItemGroup>
@@ -31,7 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="coin.png" />
     <Resource Include="Image\istockphoto-1182467404-170667a.jpg" />
     <Resource Include="Image\pngwing.com.png" />
   </ItemGroup>

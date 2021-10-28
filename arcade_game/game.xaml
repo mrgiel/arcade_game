@@ -19,7 +19,6 @@
                    Fill="red"
                    Tag="player"
                    Height="49"
-
                    Width="50"
                    Canvas.Left="99"
                    Canvas.Top="31" />
@@ -100,7 +99,6 @@
                    Height="24" Canvas.Left="608" Stretch="Fill" 
                    Source="/Image/pngwing.com.png" 
                    Canvas.Top="314" Width="25"/>
-
     </Canvas>
 </Window>
 

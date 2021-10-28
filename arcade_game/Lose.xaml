@@ -5,35 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:arcade_game"
         mc:Ignorable="d"
-        Title="Lose" Height="473" Width="815" Closed="QuitGame">
+        Title="Lose" Height="490" Width="835" Closed="QuitGame">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Image/istockphoto-1182467404-170667a.jpg"/>
         </Grid.Background>
-        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="232,40,232,294"/>
-        <Label Content="Verloren" HorizontalAlignment="Center" Margin="0,48,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="60" FontWeight="Bold"/>
-        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="151,173,443,190"/>
-        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="151,257,443,106"/>
-        <Label Content="Speler 1" HorizontalAlignment="Left" Margin="186,182,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="36" FontWeight="Bold" RenderTransformOrigin="0.493,0.575"/>
-        <Label Content="Speler 2" HorizontalAlignment="Left" Margin="184,266,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9" FontFamily="Impact" FontWeight="Bold" FontSize="36"/>
-        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="382,173,151,190"/>
-        <Label Content="Totale Score" HorizontalAlignment="Left" Margin="414,182,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9" FontFamily="Impact" FontWeight="Bold" FontSize="36"/>
-        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="382,257,151,106"/>
-        <Button Content="Start" HorizontalAlignment="Center" Margin="0,356,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.951,0.829" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" Foreground="#FFF9F9F9" FontFamily="Impact" Width="120" Click="HomeScreen">
+        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="234,10,229,324">
+            <Label  Content="Verloren" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="60" FontWeight="Bold"/>
+        </Border>
+        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="152,229,442,172">
+            <Label x:Name="p1" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="36" FontWeight="Bold" RenderTransformOrigin="0.493,0.575" Margin="0,-3,0,0" Height="46"/>
+        </Border>
+        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="152,164,442,237">
+            <Label Content="Totale Score" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFF9F9F9" FontFamily="Impact" FontWeight="Bold" FontSize="36" Margin="6,-3,0,0" Height="46"/>
+        </Border>
+        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="151,297,443,106">
+            <Label x:Name="p2" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF9F9F9" FontFamily="Impact" FontWeight="Bold" FontSize="36" Height="54"/>
+        </Border>
+        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="382,164,151,239"/>
+        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="382,229,151,174"/>
+        <Border BorderThickness="4,3,4,3" BorderBrush="#FFF9F9F9" Margin="382,297,151,106"/>
+        <Button Content="Start" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.951,0.829" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" Foreground="#FFF9F9F9" FontFamily="Impact" Width="120" Click="HomeScreen">
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
         </Button>
-        <Button Content="Opnieuw" HorizontalAlignment="Left" Margin="151,356,0,0" VerticalAlignment="Top" Height="52" RenderTransformOrigin="0.58,0.439" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="36" FontWeight="Bold" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" Width="167" Click="Opnieuw">
+        <Button Content="Opnieuw" HorizontalAlignment="Center" Margin="0,368,0,0" VerticalAlignment="Top" Height="52" RenderTransformOrigin="0.58,0.439" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="36" FontWeight="Bold" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" Width="167" Click="Opnieuw">
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
         </Button>
-        <Button Content="Opties" HorizontalAlignment="Left" Margin="482,356,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="36" FontWeight="Bold" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" Height="52" Width="166" Click="Opties">
+        <Button Content="Highscore" HorizontalAlignment="Left" Margin="623,368,0,0" VerticalAlignment="Top" Foreground="#FFF9F9F9" FontFamily="Impact" FontSize="36" FontWeight="Bold" BorderBrush="#FFF9F9F9" BorderThickness="4,3,4,3" Height="52" Width="182" Click="Highscore">
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
         </Button>
+
 
     </Grid>
 </Window>

@@ -32,6 +32,8 @@ namespace WpfApp1
 
 
 
+       
+
         private bool moveUp2, moveLeft2, moveRight2;
         private bool moveUp1, moveLeft1, moveRight1;
 
@@ -45,7 +47,7 @@ namespace WpfApp1
         const int GravitySpeed = 1;
 
         private bool knopdown = false;
-
+        
         private int teller;
 
         private int jumptime1, jumptime2;
@@ -147,7 +149,7 @@ namespace WpfApp1
             if (Gravity1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + GravitySpeed);
 
-            if (moveUp2 && Canvas.GetTop(Player2) > 0 && spaceUp2)
+            if (moveUp2&& Canvas.GetTop(Player2) > 0 && spaceUp2)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) - playerSpeed);
                 jumptime2++;
             if (moveRight2 && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 815 && spaceRight2)
@@ -287,6 +289,60 @@ namespace WpfApp1
                 {
                     Rect knopHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
+                    if (knopdown == true)
+                    {
+                        x.Visibility = Visibility.Hidden;
+                    }
+                    if (x.IsVisible) 
+                    {
+                        Rect platformHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+
+                        if (player1HitBox.IntersectsWith(platformHitBox))
+                        {
+                            if (Canvas.GetTop(Player1) < (Canvas.GetTop(x) - (Player1.Height - 1)))
+                            {
+                                Gravity1 = false;
+                            }
+                            if (Canvas.GetLeft(Player1) == (Canvas.GetLeft(x) - Player1.Width + 1) && Canvas.GetTop(Player1) > (Canvas.GetTop(x) - Player1.Height))
+                            {
+                                spaceRight1 = false;
+                            }
+                            if (Canvas.GetLeft(Player1) == (Canvas.GetLeft(x) + x.Width - 1) && Canvas.GetTop(Player1) > (Canvas.GetTop(x) - Player1.Height))
+                            {
+                                spaceLeft1 = false;
+                            }
+                            if (Canvas.GetTop(Player1) == Canvas.GetTop(x) + x.Height - 1)
+                            {
+                                spaceUp1 = false;
+                            }
+                        }
+
+                        if (player2HitBox.IntersectsWith(platformHitBox))
+                        {
+                            if (Canvas.GetTop(Player2) < (Canvas.GetTop(x) - (Player2.Height - 1)))
+                            {
+                                Gravity2 = false;
+                            }
+                            if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) - Player2.Width + 1) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
+                            {
+                                spaceRight2 = false;
+                            }
+                            if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) + x.Width - 1) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
+                            {
+                                spaceLeft2 = false;
+                            }
+                            if (Canvas.GetTop(Player2) == Canvas.GetTop(x) + x.Height - 1)
+                            {
+                                spaceUp2 = false;
+                            }
+                        }
+
+                    }
+                }
+                if ((string)x.Tag == "knop")
+                {
+                    Rect knopHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+
                     if (player1HitBox.IntersectsWith(knopHitBox))
                     {
                         knopdown = true;
@@ -303,6 +359,7 @@ namespace WpfApp1
                 if ((string)x.Tag == "spike")
                 {
                     Rect spikeHitBox = new Rect((Canvas.GetLeft(x) + 2), (Canvas.GetTop(x) + 13), (x.Width - 4), x.Height);
+                    Rect spikeHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
                     if (player1HitBox.IntersectsWith(spikeHitBox))
                     {
                         Lose();
@@ -331,6 +388,7 @@ namespace WpfApp1
 
                             x.Visibility = Visibility.Hidden;
                             scoreplayer2 += 1;
+                            highscore += 1;
                         }
                     }
                 }
