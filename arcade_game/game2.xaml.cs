@@ -52,6 +52,9 @@ namespace arcade_game
 
         private int jumptime1, jumptime2;
 
+        bool player1door = false;
+        bool player2door = false;
+
         public Game2(int highscore, string teamname, string player1, string player2, int seconde, int scoreplayer1, int scoreplayer2)
         {
             InitializeComponent();
@@ -339,10 +342,6 @@ namespace arcade_game
                 }
             }
 
-
-            bool player1door = false;
-            bool player2door = false;
-
             Rect doorbleuHitBox = new Rect(Canvas.GetLeft(doorbleu), Canvas.GetTop(doorbleu), doorbleu.Width, doorbleu.Height);
             Rect doorredHitBox = new Rect(Canvas.GetLeft(doorred), Canvas.GetTop(doorred), doorred.Width, doorred.Height);
 
@@ -381,14 +380,14 @@ namespace arcade_game
         {
             Application.Current.Shutdown();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Restart(object sender, RoutedEventArgs e)
         {
             StartGame startgame = new StartGame();
             startgame.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Main(object sender, RoutedEventArgs e)
         {
             MainWindow mainwindow = new MainWindow();
             mainwindow.Visibility = Visibility.Visible;

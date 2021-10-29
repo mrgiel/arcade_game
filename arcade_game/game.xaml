@@ -100,8 +100,8 @@
                    Source="/Image/pngwing.com.png" 
                    Canvas.Top="536" Width="26"/>
         <Rectangle Height="2" Stroke="Black" Canvas.Top="40" Width="815"/>
-        <Button Content="Herstart" Canvas.Left="681" Canvas.Top="10" Click="Button_Click"/>
-        <Button Content="Stoppen" Canvas.Left="745" Canvas.Top="10" Click="Button_Click_1"/>
+        <Button Content="Herstart" Canvas.Left="681" Canvas.Top="10" Click="Restart"/>
+        <Button Content="Stoppen" Canvas.Left="745" Canvas.Top="10" Click="MainWindow"/>
     </Canvas>
 </Window>
 

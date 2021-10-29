@@ -30,10 +30,6 @@ namespace WpfApp1
         public int highscore { get; set; }
         public int seconde { get; set; }
 
-
-
-       
-
         private bool moveUp2, moveLeft2, moveRight2;
         private bool moveUp1, moveLeft1, moveRight1;
 
@@ -53,6 +49,9 @@ namespace WpfApp1
         private int jumptime1, jumptime2;
 
         private int scoreplayer1, scoreplayer2;
+
+        bool player1door = false;
+        bool player2door = false;
 
         public Game(int highscore, string teamname, string player1, string player2)
         {
@@ -339,10 +338,6 @@ namespace WpfApp1
                 }
             }
 
-
-            bool player1door = false;
-            bool player2door = false;
-
             Rect doorbleuHitBox = new Rect(Canvas.GetLeft(doorbleu), Canvas.GetTop(doorbleu), doorbleu.Width, doorbleu.Height);
             Rect doorredHitBox = new Rect(Canvas.GetLeft(doorred), Canvas.GetTop(doorred), doorred.Width, doorred.Height);
 
@@ -386,13 +381,13 @@ namespace WpfApp1
             Application.Current.Shutdown();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Restart(object sender, RoutedEventArgs e)
         {
             StartGame startgame = new StartGame();
             startgame.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
         }
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void MainWindow(object sender, RoutedEventArgs e)
         {
             MainWindow mainwindow = new MainWindow();
             mainwindow.Visibility = Visibility.Visible;
