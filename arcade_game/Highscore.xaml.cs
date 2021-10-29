@@ -22,7 +22,15 @@ namespace arcade_game
     /// </summary>
     public partial class Highscore : Window
     {
-        Dictionary<string, int> highscores = new Dictionary<string, int>();
+        //Dictionary en list zijn hier nog leeg maar owrden later aangevuld met data uit de database (de GetHighscore() functie)
+        //Dictionary teams = Id + Teamnaam
+        //List player1 = ingevulde naam voor speler 1
+        //List player2 = ingevulde naam voor speler 2
+        //List highscore = behaalde highscore van het team
+        Dictionary<int, string> teams = new Dictionary<int, string>();
+        List<string> player1 = new List<string>();
+        List<string> player2 = new List<string>();
+        List<int> highscore = new List<int>();
 
         public object HighScorePannel { get; private set; }
 
@@ -39,26 +47,29 @@ namespace arcade_game
             Application.Current.Shutdown();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Back(object sender, RoutedEventArgs e)
         {
             MainWindow mainwindow = new MainWindow();
             mainwindow.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Opties(object sender, RoutedEventArgs e)
         {
             Window1 options = new Window1();
             options.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// Maakt database verbinding en zorgt ervoor dat de list en dictinary worden gevuld met de juiste data
+        /// </summary>
         private void GetHighScore()
         {
-            highscores.Clear();
+            teams.Clear();
             string connectionString = ConfigurationManager.ConnectionStrings
                 ["MyConnectionString"].ConnectionString; ;
-            string query = "SELECT Teamnaam, Highscore FROM Game";
+            string query = "SELECT Id, Teamnaam, Speler1, Speler2, Highscore FROM Game ORDER BY Highscore DESC";
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand();
             try
@@ -71,7 +82,13 @@ namespace arcade_game
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    highscores.Add((string)reader[0], (int)reader[1]);
+                    //reader[0] is het eerste tabel waar hij door heen komt in de database. (dus Id)
+                    //reader[1] is de tweede tabel, dus Teamnaam
+                    // etc. Zie regel 72
+                    teams.Add((int)reader[0], (string)reader[1]);
+                    player1.Add((string)reader[2]);
+                    player2.Add((string)reader[3]);
+                    highscore.Add((int)reader[4]);
                 }
 
                 connection.Close();
@@ -85,14 +102,16 @@ namespace arcade_game
 
         private void CreateLabels()
         {
+            int i = 0;
             HighScorePanel.Children.Clear();
-            var sortedhighscore = from Highscore in highscores orderby Highscore.Value descending select Highscore;
-            foreach (KeyValuePair<string, int>highscore in sortedhighscore)
+            var sortedhighscore = from Highscore in teams orderby Highscore.Value descending select Highscore;
+            foreach (var team in teams)
             {
                 Label label = new Label();
-                label.Content = highscore.Key + highscore.Value;
+                label.Content = team.Value + player1[i] + player2[i] + highscore[i];
                 label.HorizontalAlignment = HorizontalAlignment.Center;
                 HighScorePanel.Children.Add(label);
+                i++;
 
             }
         }
