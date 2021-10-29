@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -55,7 +56,8 @@ namespace arcade_game
         private void GetHighScore()
         {
             highscores.Clear();
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\youss\\Source\\Repos\\mrgiel\\arcade_game\\arcade_game\\Data\\Database1.mdf\";Integrated Security=True";
+            string connectionString = ConfigurationManager.ConnectionStrings
+                ["MyConnectionString"].ConnectionString; ;
             string query = "SELECT Teamnaam, Highscore FROM Game";
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand();
@@ -76,7 +78,6 @@ namespace arcade_game
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
                 connection.Close();
             }
 

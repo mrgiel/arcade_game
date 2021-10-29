@@ -33,6 +33,8 @@ namespace arcade_game
 
         public Win(int highscore, string teamname, string player1, string player2, int scoreplayer1, int scoreplayer2)
         {
+            //Zorgt er voor dat de variabel die in dit script wordt aangeroepen dezelfde waarde heeft als in het vorige script.
+            //this.highscore is regel 28 en de blauwe 'highscore' komt uit game2.xaml.cs (daar krijgt hij de waarde)
             this.highscore = highscore;
             this.scoreplayer1 = scoreplayer1;
             this.scoreplayer2 = scoreplayer2;
@@ -44,7 +46,9 @@ namespace arcade_game
             setName();
             AddHighscoreToDatabase(highscore, teamname, player1, player2);
         }
-
+        /// <summary>
+        /// Zorgt er voor dat spelernamen en scores zichtbaar zijn in de game
+        /// </summary>
         private void setName()
         {
             p1.Content = player1;
@@ -68,6 +72,7 @@ namespace arcade_game
             string connectionString = ConfigurationManager.ConnectionStrings
                 ["MyConnectionString"].ConnectionString; ;
 
+            //standaard insert query. Stuurt de waardes van teamname, player1, player2 en highscore in de tables Teamnaam, Speler1, Speler2 en Highscore.
             string query = "INSERT INTO [Game] ([Teamnaam],[Speler1],[Speler2],[Highscore]) VALUES ('" + teamname + "', '" + player1 + "','" + player2 + "','" + highscore + "')";
 
             SqlConnection connection = new SqlConnection(connectionString);

@@ -5,111 +5,113 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:arcade_game"
         mc:Ignorable="d"
-        Title="Game2" Height="450" Width="800">
+        Title="Game2" Height="664" Width="815">
     <Canvas x:Name="game2" KeyDown="game2_KeyDown" KeyUp="game2_KeyUp" Focusable="True">
         <Rectangle x:Name="Player1"
                    Fill="Blue"
                    Tag="player"
                    Height="50"
                    Width="50"
-                   Canvas.Left="636"
-                   Canvas.Top="162"/>
+                   Canvas.Left="755"
+                   Canvas.Top="534"/>
         <Rectangle x:Name="Player2"
                    Fill="red"
                    Tag="player"
                    Height="50"
                    Width="50"
-                   Canvas.Left="436"
-                   Canvas.Top="61" />
+                   Canvas.Left="690"
+                   Canvas.Top="534" />
         <Rectangle x:Name="platform1" 
                    Tag="platform" 
                    Fill="Black" 
                    Height="50" Width="550" 
-                   Canvas.Left="501" Canvas.Top="86"/>
+                   Canvas.Left="510" Canvas.Top="305"/>
         <Rectangle x:Name="platform2" 
                    Tag="platform" 
                    Fill="Black" 
                    Height="50" Width="500" 
-                   Canvas.Left="301" Canvas.Top="230"/>
+                   Canvas.Left="310" Canvas.Top="449"/>
         <Rectangle x:Name="platform" 
                    Tag="platform" 
                    Fill="Black" 
                    Height="50" Width="600" 
-                   Canvas.Left="-201" Canvas.Top="86"/>
+                   Canvas.Left="-192" Canvas.Top="305"/>
         <Rectangle x:Name="platform5" 
                    Tag="platform" 
                    Fill="Black" 
-                   Height="50" Width="658" 
-                   Canvas.Left="157" Canvas.Top="378"/>
+                   Height="50" Width="824" Canvas.Top="589" Canvas.Left="41"/>
         <Image     Source="/Image/spikes.PNG" 
                    x:Name="spike1" 
                    Tag ="spike" 
-                   Canvas.Left="528" Canvas.Top="353" 
+                   Canvas.Left="545" Canvas.Top="564" 
                    Height="25" Width="30" />
         <Image     Source="/Image/spikes.PNG" 
                    x:Name="spike2" 
                    Tag ="spike" 
-                   Canvas.Left="551" Canvas.Top="205" 
+                   Canvas.Left="560" Canvas.Top="424" 
                    Height="25" Width="30" />
         <Image     Source="/Image/doorbleu.PNG" 
                    x:Name ="doorbleu"
                    Tag ="door"
-                   Canvas.Left="757" Canvas.Top="3" 
+                   Canvas.Left="766" Canvas.Top="222" 
                    Height="83" Width="38" />
         <Image     Source="/Image/doorred.PNG" 
                    x:Name ="doorred"
                    Tag ="door"
-                   Canvas.Left="12" Canvas.Top="4"
+                   Canvas.Left="21" Canvas.Top="223"
                    Height="83" Width="38" />
         <Rectangle x:Name="knop1"
                    Tag="knop"
                    Fill="Pink"
                    Height="6" Width="50" 
-                   Canvas.Left="608" Canvas.Top="223"/>
+                   Canvas.Left="617" Canvas.Top="442"/>
         <Rectangle x:Name="knop3"
                    Tag="knop"
                    Fill="Pink"
                    Height="6" Width="50" 
-                   Canvas.Left="396" Canvas.Top="372"/>
+                   Canvas.Left="405" Canvas.Top="583"/>
         <Rectangle x:Name="knop2"
                    Tag="knop"
                    Fill="Pink"
                    Height="6" Width="50" 
-                   Canvas.Left="280" Canvas.Top="80"/>
+                   Canvas.Left="289" Canvas.Top="299"/>
         <Rectangle x:Name="opstakel1"
                    Tag="opstakel"
                    Fill="Pink"
                    Height="100" Width="50" 
-                   Canvas.Left="371" Canvas.Top="112"/>
+                   Canvas.Left="380" Canvas.Top="331"/>
         <Rectangle x:Name="opstakel2"
                    Tag="opstakel"
                    Fill="Pink"
                    Height="100" Width="50" 
-                   Canvas.Left="251" Canvas.Top="238"/>
+                   Canvas.Left="260" Canvas.Top="457"/>
 
 
-        <Label     x:Name="score" Width="100"/>
-        <Label     x:Name="klok" Width="100" Canvas.Left="100"/>
+        <Label     x:Name="score" Content="test" Width="100" FontSize="24"/>
+        <Label     x:Name="klok" Content="test" Width="140" Canvas.Left="125" FontSize="24"/>
         <Image     Tag="coin" 
-                   Height="25" Canvas.Left="642" Stretch="Fill" 
+                   Height="25" Canvas.Left="651" Stretch="Fill" 
                    Source="Image/pngwing.com.png" 
-                   Canvas.Top="56" Width="25"/>
+                   Canvas.Top="275" Width="25"/>
         <Image     Tag="coin" 
-                   Height="25" Canvas.Left="674" Stretch="Fill" 
+                   Height="25" Canvas.Left="683" Stretch="Fill" 
                    Source="/Image/pngwing.com.png" 
-                   Canvas.Top="56" Width="25"/>
+                   Canvas.Top="275" Width="25"/>
         <Image     Tag="coin" 
-                   Height="25" Canvas.Left="706" Stretch="Fill" 
+                   Height="25" Canvas.Left="715" Stretch="Fill" 
                    Source="/Image/pngwing.com.png" 
-                   Canvas.Top="56" Width="25"/>
+                   Canvas.Top="275" Width="25"/>
         <Image     Tag="coin" 
-                   Height="25" Canvas.Left="125" Stretch="Fill" 
+                   Height="25" Canvas.Left="134" Stretch="Fill" 
                    Source="/Image/pngwing.com.png" 
-                   Canvas.Top="326" Width="25"/>
+                   Canvas.Top="545" Width="25"/>
         <Image     Tag="coin" 
-                   Height="24" Canvas.Left="608" Stretch="Fill" 
+                   Height="24" Canvas.Left="617" Stretch="Fill" 
                    Source="/Image/pngwing.com.png" 
-                   Canvas.Top="314" Width="25"/>
+                   Canvas.Top="533" Width="25"/>
+        <Rectangle Height="2" Stroke="Black" Canvas.Top="40" Width="815"/>
+        <Button Content="Herstart" Canvas.Left="681" Canvas.Top="10" Click="Button_Click"/>
+        <Button Content="Stoppen" Canvas.Left="745" Canvas.Top="10" Click="Button_Click_1"/>
 
     </Canvas>
 </Window>

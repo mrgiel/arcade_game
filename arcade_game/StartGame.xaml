@@ -106,17 +106,17 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="72" Click="Button_Click" Content="Spelen" BorderBrush="White" BorderThickness="4,3,4,3" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold">
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="72" Click="Starten" Content="Spelen" BorderBrush="White" BorderThickness="4,3,4,3" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
             </Button>
-            <Button Content="Terug" HorizontalAlignment="Left" Margin="125,0,0,0" VerticalAlignment="Center" BorderBrush="White" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" FontFamily="Impact" Foreground="White" Width="130" Height="72" Click="Button_Click_1">
+            <Button Content="Terug" HorizontalAlignment="Left" Margin="125,0,0,0" VerticalAlignment="Center" BorderBrush="White" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" FontFamily="Impact" Foreground="White" Width="130" Height="72" Click="Startscherm">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
             </Button>
-            <Button Content="Opties" HorizontalAlignment="Left" Margin="545,0,0,0" VerticalAlignment="Center" BorderBrush="White" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" FontFamily="Impact" Foreground="White" Height="72" Width="128" Click="Button_Click_2">
+            <Button Content="Opties" HorizontalAlignment="Left" Margin="545,0,0,0" VerticalAlignment="Center" BorderBrush="White" BorderThickness="4,3,4,3" FontWeight="Bold" FontSize="36" FontFamily="Impact" Foreground="White" Height="72" Width="128" Click="Opties">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>

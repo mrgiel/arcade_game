@@ -32,14 +32,14 @@ namespace arcade_game
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void StartGame(object sender, RoutedEventArgs e)
         {
             StartGame startGame = new StartGame();
             startGame.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Highscore(object sender, RoutedEventArgs e)
         {
             Highscore highscore = new Highscore();
             highscore.Visibility = Visibility.Visible;
@@ -51,16 +51,11 @@ namespace arcade_game
             Application.Current.Shutdown();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Opties(object sender, RoutedEventArgs e)
         {
             Window1 options = new Window1();
             options.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
-        }
-
-        private void QuitGame(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
     }
 }
