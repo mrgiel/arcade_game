@@ -30,6 +30,7 @@ namespace WpfApp1
         public int highscore { get; set; }
         public int seconde { get; set; }
 
+        // variabele voor playermovment
         private bool moveUp2, moveLeft2, moveRight2;
         private bool moveUp1, moveLeft1, moveRight1;
 
@@ -43,7 +44,8 @@ namespace WpfApp1
         const int GravitySpeed = 1;
 
         private bool knopdown = false;
-        
+
+        // variabele die frames telt 
         private int teller;
 
         private int jumptime1, jumptime2;
@@ -72,6 +74,7 @@ namespace WpfApp1
 
         private void game_KeyDown(object sender, KeyEventArgs e)
         {
+            //player1 movment
             if (e.Key == Key.A)
                 moveLeft1 = true;
             if (e.Key == Key.D)
@@ -79,6 +82,7 @@ namespace WpfApp1
             if (e.Key == Key.W)
                 moveUp1 = true;
 
+            //player2 movment
             if (e.Key == Key.Left)
                 moveLeft2 = true;
             if (e.Key == Key.Right)
@@ -86,7 +90,6 @@ namespace WpfApp1
             if (e.Key == Key.Up)
                 moveUp2 = true;
 
-            // Dit moet nog aangepast worden
             if (e.Key == Key.K)
                 Win();
             if (e.Key == Key.L)
@@ -94,6 +97,7 @@ namespace WpfApp1
         }
         private void game_KeyUp(object sender, KeyEventArgs e)
         {
+            //player1 movment
             if (e.Key == Key.A)
                 moveLeft1 = false;
             if (e.Key == Key.D)
@@ -101,6 +105,7 @@ namespace WpfApp1
             if (e.Key == Key.W)
                 moveUp1 = false;
 
+            //player2 movment
             if (e.Key == Key.Left)
                 moveLeft2 = false;
             if (e.Key == Key.Right)
@@ -138,6 +143,7 @@ namespace WpfApp1
             score.Content = "Score: " + highscore;
             klok.Content = "Tijd over: " + seconde;
 
+            //player1 movment
             if (moveUp1 && Canvas.GetTop(Player1) > 0 && spaceUp1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - playerSpeed);
                 jumptime1++;
@@ -148,6 +154,7 @@ namespace WpfApp1
             if (Gravity1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + GravitySpeed);
 
+            //player2 movment
             if (moveUp2&& Canvas.GetTop(Player2) > 0 && spaceUp2)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) - playerSpeed);
                 jumptime2++;
@@ -174,6 +181,7 @@ namespace WpfApp1
             Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
             Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
 
+            //telst frames en zorgd voor timer
             foreach (var x in game.Children.OfType<Rectangle>())
             {
                 if ((string)x.Tag == "platform")
