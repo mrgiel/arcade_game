@@ -364,7 +364,7 @@ namespace WpfApp1
         /// </summary>
         private void Win()
         {
-            Game2 game2 = new Game2(highscore, teamname, player1, player2, seconde);
+            Game2 game2 = new Game2(highscore, teamname, player1, player2, seconde, scoreplayer1, scoreplayer2);
             game2.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
             gameTimer.Stop();
@@ -375,7 +375,7 @@ namespace WpfApp1
         /// </summary>
         private void Lose()
         {
-            Lose lost = new Lose(highscore, teamname, player1, player2);
+            Lose lost = new Lose(highscore, teamname, player1, player2, scoreplayer1, scoreplayer2);
             lost.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
             gameTimer.Stop();

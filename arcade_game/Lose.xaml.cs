@@ -26,14 +26,18 @@ namespace arcade_game
         public string player1 { get; set; }
         public string player2 { get; set; }
         public int highscore { get; set; }
+        public int scoreplayer1 { get; set; }
+        public int scoreplayer2 { get; set; }
 
-        public Lose(int highscore, string teamname, string player1, string player2)
+        public Lose(int highscore, string teamname, string player1, string player2, int scoreplayer1, int scoreplayer2)
         {
             this.highscore = highscore;
             this.teamname = teamname;
             this.player1 = player1;
             this.player2 = player2;
-          
+            this.scoreplayer1 = scoreplayer1;
+            this.scoreplayer2 = scoreplayer2;
+
             InitializeComponent();
             setName();
             AddHighscoreToDatabase(highscore, teamname, player1, player2);
@@ -74,6 +78,11 @@ namespace arcade_game
         {
             p1.Content = player1;
             p2.Content = player2;
+            p1.Content = player1;
+            p2.Content = player2;
+            hs.Content = highscore;
+            sp1.Content = scoreplayer1;
+            sp2.Content = scoreplayer2;
         }
         private void QuitGame(object sender, EventArgs e)
         {
