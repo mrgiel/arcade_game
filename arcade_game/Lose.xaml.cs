@@ -29,6 +29,8 @@ namespace arcade_game
         public int scoreplayer1 { get; set; }
         public int scoreplayer2 { get; set; }
 
+        //Zorgt er voor dat de variabel die in dit script wordt aangeroepen dezelfde waarde heeft als in het vorige script.
+        //this.highscore is regel 28 en de blauwe 'highscore' komt uit game2.xaml.cs of game.xaml.cs (daar krijgt hij de waarde)
         public Lose(int highscore, string teamname, string player1, string player2, int scoreplayer1, int scoreplayer2)
         {
             this.highscore = highscore;
@@ -52,8 +54,10 @@ namespace arcade_game
         /// <param name="player2"></param>
         private void AddHighscoreToDatabase(int highscore, string teamname, string player1, string player2)
         {
+            //connectionString haalt hij op bij App.config. Op deze manier kan het gedeelt worden via git en hoef je niet elke keer de string aan te passen.
             string connectionString = ConfigurationManager.ConnectionStrings
                 ["MyConnectionString"].ConnectionString; ; ;
+
             string query = "INSERT INTO [Game] ([Teamnaam],[Speler1],[Speler2],[Highscore]) VALUES ('" + teamname + "', '" + player1 + "','" + player2 + "','" + highscore + "')";
 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -73,7 +77,9 @@ namespace arcade_game
                 connection.Close();
             }
         }
-
+        /// <summary>
+        /// Zorgt er voor dat spelernamen en scores zichtbaar zijn in de game
+        /// </summary>
         private void setName()
         {
             p1.Content = player1;
