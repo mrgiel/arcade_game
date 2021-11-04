@@ -104,12 +104,14 @@ namespace arcade_game
         {
             int i = 0;
             HighScorePanel.Children.Clear();
-            var sortedhighscore = from Highscore in teams orderby Highscore.Value descending select Highscore;
             foreach (var team in teams)
             {
                 Label label = new Label();
                 label.Content = team.Value + player1[i] + player2[i] + highscore[i];
+                label.Foreground = Brushes.White;
                 label.HorizontalAlignment = HorizontalAlignment.Center;
+                label.FontSize = 24;
+                label.FontWeight = FontWeights.Bold;
                 HighScorePanel.Children.Add(label);
                 i++;
 
