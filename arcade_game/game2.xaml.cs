@@ -24,6 +24,7 @@ namespace arcade_game
     /// </summary>
     public partial class Game2 : Window
     {
+        // variabele die al een waarde hebben en mee moetne worden gegeven naar andere windows
         public string teamname { get; set; }
         public string player1 { get; set; }
         public string player2 { get; set; }
@@ -54,11 +55,17 @@ namespace arcade_game
 
         private int jumptime1, jumptime2;
 
+        // variabele voor de deuren 
         bool player1door = false;
         bool player2door = false;
 
+        /// <summary>
+        /// in Game word er een gametimer aangemaakt 
+        /// de methode word aan geroepen waneer de window word geopend
+        /// </summary>
         public Game2(int highscore, string teamname, string player1, string player2, int seconde, int scoreplayer1, int scoreplayer2)
         {
+            // gametimer zorgd er voor da gameangine idere 5 ms word aan geroepen
             InitializeComponent();
             gameTimer.Interval = TimeSpan.FromMilliseconds(5);
             gameTimer.Tick += GameEngine;
@@ -73,9 +80,13 @@ namespace arcade_game
             this.scoreplayer1 = scoreplayer1;
             this.scoreplayer2 = scoreplayer2;
         }
+
+        /// <summary>
+        /// de methode game_KeyDown word aan geroepen als er een keydown is 
+        /// </summary>
         private void game2_KeyDown(object sender, KeyEventArgs e)
         {
-            //player1 movment
+            //dit zorgd er voor dat de W A S keys werken voor de playermovment van player1 als de key down is 
             if (e.Key == Key.A)
                 moveLeft1 = true;
             if (e.Key == Key.D)
@@ -83,6 +94,7 @@ namespace arcade_game
             if (e.Key == Key.W)
                 moveUp1 = true;
 
+            //dit zorgd er voor dat de Up Left Right keys werken voor de playermovment van player2 als de key down is 
             if (e.Key == Key.Left)
                 moveLeft2 = true;
             if (e.Key == Key.Right)
@@ -96,9 +108,13 @@ namespace arcade_game
             if (e.Key == Key.L)
                 Lose();
         }
+
+        /// <summary>
+        /// de methode game_KeyUp wordt aangeroepen waneer er een keyup is
+        /// </summary>
         private void game2_KeyUp(object sender, KeyEventArgs e)
         {
-            //player2 movment
+            // dit zorgd er voor dat als je stopt met de key indrukken dat de player ook stopt met die kan op bewegen 
             if (e.Key == Key.A)
                 moveLeft1 = false;
             if (e.Key == Key.D)
@@ -113,12 +129,17 @@ namespace arcade_game
             if (e.Key == Key.Up)
                 moveUp2 = false;
         }
+
+        /// <summary>
+        /// de methode GameEngine word iedere 5 ms aangeroepen door de gametimer, hier word alles wat beweegt geregeld
+        /// </summary>
         private void GameEngine(object sender, EventArgs e)
         {
+            // berekend de highscore die i nbeeld staat en die je krijgt aan het einde van het spel
             highscore = scoreplayer1 + scoreplayer2 + seconde / 4;
             teller++;
 
-            //telst frames en zorgd voor timer
+            // heir word de timer die in beeld staat berekend, iedere 200 frams gaat er 1 van seconde af
             if (teller >= 200)
             {
                 seconde = seconde - 1;
@@ -131,6 +152,7 @@ namespace arcade_game
                 Lose();
             }
 
+            // hier worde moveup1 en meveup2 op fals gezet al de players 40 frames of meer omhoog aan het bewegen waren zonder een platform van de zijkand aan te raken of onderkant zodat je niet oneindig kan jumpen
             if (jumptime1 >= 40)
             {
                 moveUp1 = false;
@@ -140,13 +162,14 @@ namespace arcade_game
                 moveUp2 = false;
             }
 
+            // hier worden te labels die rechtbove in het gamewinde staan gevuld zodat je de timer en de score kan zien
             score.Content = "Score: " + highscore;
             klok.Content = "Tijd over: " + seconde;
 
-            //player1 movment
+            // in deze if statmens worde de player movent er word hier gekontroleerd of het keys voor movent zijn ingedrukt en of de player niet links of recht uit het scherm beweegt of dat de players niet tegen een opject aan zitten waar ze niet door heen mogen
             if (moveUp1 && Canvas.GetTop(Player1) > 0 && spaceUp1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - playerSpeed);
-            jumptime1++;
+                jumptime1++;
             if (moveRight1 && Canvas.GetLeft(Player1) + (Player1.Width * 1.5) < 815 && spaceRight1)
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + playerSpeed);
             if (moveLeft1 && Canvas.GetLeft(Player1) > 0 && spaceLeft1)
@@ -154,10 +177,9 @@ namespace arcade_game
             if (Gravity1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + GravitySpeed);
 
-            //player2 movment
             if (moveUp2 && Canvas.GetTop(Player2) > 0 && spaceUp2)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) - playerSpeed);
-            jumptime2++;
+                jumptime2++;
             if (moveRight2 && Canvas.GetLeft(Player2) + (Player2.Width * 1.5) < 815 && spaceRight2)
                 Canvas.SetLeft(Player2, Canvas.GetLeft(Player2) + playerSpeed);
             if (moveLeft2 && Canvas.GetLeft(Player2) > 0 && spaceLeft2)
@@ -178,6 +200,7 @@ namespace arcade_game
 
             knopdown = false;
 
+            // hier krijgt player1hitbox en player2hitbox de waardenm van de zij en boven en onderkant van de player zodat we kunnen kontroleren of ze eregens tegen aan bewegen
             Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
             Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
 
@@ -188,8 +211,10 @@ namespace arcade_game
                 {
                     x.Stroke = Brushes.Black;
 
+                    // hier krijgt platformhitbox de waardenm van de zij en boven en onderkant van de platformen zodat we kunnen kontroleren 1 van de players er tegen aan bost
                     Rect platformHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
+                    // deze if statement zorgen er voor dat de players stoppen met bewegen als tegen een platform aan komen
                     if (player1HitBox.IntersectsWith(platformHitBox))
                     {
                         if (Canvas.GetTop(Player1) < (Canvas.GetTop(x) - (Player1.Height - 2)))
@@ -236,6 +261,7 @@ namespace arcade_game
                         }
                     }
                 }
+                // deze if statement regeld de hetboxen voor de opstakels en zorgd er voor dat als je op een knop gaat staan het opstakel verschijnt 
                 if ((string)x.Tag == "opstakel")
                 {
                     x.Stroke = Brushes.Black;
@@ -278,7 +304,7 @@ namespace arcade_game
                             if (Canvas.GetTop(Player2) < (Canvas.GetTop(x) - (Player2.Height - 1)))
                             {
                                 Gravity2 = false;
-                                    jumptime2 = 0;
+                                jumptime2 = 0;
                             }
                             if (Canvas.GetLeft(Player2) == (Canvas.GetLeft(x) - Player2.Width + 1) && Canvas.GetTop(Player2) > (Canvas.GetTop(x) - Player2.Height))
                             {
@@ -298,6 +324,7 @@ namespace arcade_game
 
                     }
                 }
+                // in deze if statement word er geregistreerd of er een player op een knop staat
                 if ((string)x.Tag == "knop")
                 {
                     Rect knopHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
@@ -315,6 +342,7 @@ namespace arcade_game
             }
             foreach (var x in game2.Children.OfType<Image>())
             {
+                //deze if statement zorgd er voor dat het spel beeindigd als 1 van de players op een spike staan
                 if ((string)x.Tag == "spike")
                 {
                     Rect spikeHitBox = new Rect((Canvas.GetLeft(x) + 2), (Canvas.GetTop(x) + 13), (x.Width - 4), x.Height);
@@ -327,6 +355,7 @@ namespace arcade_game
                         Lose();
                     }
                 }
+                //deze if statement zorgd er voor dat de player die op een coin staat een punt krijgt
                 if ((string)x.Tag == "coin")
                 {
                     Rect coinHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
@@ -351,6 +380,7 @@ namespace arcade_game
                 }
             }
 
+            // hier krijgen de deuren ook een hitbox zodat waneer de players voor de goede deuren staan ze naar het vlgende level gaan
             Rect doorbleuHitBox = new Rect(Canvas.GetLeft(doorbleu), Canvas.GetTop(doorbleu), doorbleu.Width, doorbleu.Height);
             Rect doorredHitBox = new Rect(Canvas.GetLeft(doorred), Canvas.GetTop(doorred), doorred.Width, doorred.Height);
 
@@ -368,7 +398,10 @@ namespace arcade_game
             }
         }
 
-        
+        /// <summary>
+        /// dede methode word aangeroen waneer de player de levels heeft uitgespeeld
+        /// Zorgt er voor dat je naar het volgende level gaat
+        /// </summary>
         private void Win()
         {
             Win won = new Win(highscore, teamname, player1, player2, scoreplayer1, scoreplayer2);
@@ -377,7 +410,10 @@ namespace arcade_game
             gameTimer.Stop();
         }
 
-        
+        /// <summary>
+        /// dede methode word aangeroen waneer de player op een spike staat of als de timer om is
+        /// Zorgt er voor dat je naar het verlies scherm gaat. Stuurt spelerdata mee.
+        /// </summary>
         private void Lose()
         {
             Lose lost = new Lose(highscore, teamname, player1, player2, scoreplayer1, scoreplayer2);
@@ -390,6 +426,10 @@ namespace arcade_game
         {
             Application.Current.Shutdown();
         }
+
+        /// <summary>
+        /// methode om de game te restarten 
+        /// </summary>
         private void Restart(object sender, RoutedEventArgs e)
         {
             StartGame startgame = new StartGame();

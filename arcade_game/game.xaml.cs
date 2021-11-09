@@ -24,13 +24,14 @@ namespace WpfApp1
     /// </summary>
     public partial class Game : Window
     {
+        // variabele die al een waarde hebben en mee moetne wroden gegeven naar andere windows
         public string teamname { get; set; }
         public string player1 { get; set; }
         public string player2 { get; set; }
         public int highscore { get; set; }
         public int seconde { get; set; }
 
-        // variabele voor playermovment
+        // variabele voor playermovment 
         private bool moveUp2, moveLeft2, moveRight2;
         private bool moveUp1, moveLeft1, moveRight1;
 
@@ -45,18 +46,25 @@ namespace WpfApp1
 
         private bool knopdown = false;
 
-        // variabele die frames telt 
+        // variabele die worden gebruikt voor de timer die je in beeld ziet teller;
         private int teller;
 
         private int jumptime1, jumptime2;
 
         private int scoreplayer1, scoreplayer2;
 
+        // variabele voor de deuren 
         bool player1door = false;
         bool player2door = false;
 
+
+        /// <summary>
+        /// in Game word er een gametimer aangemaakt 
+        /// de methode word aan geroepen waneer de window word geopend
+        /// </summary>
         public Game(int highscore, string teamname, string player1, string player2)
         {
+            // gametimer zorgd er voor da gameangine idere 5 ms word aan geroepen
             InitializeComponent();
             gameTimer.Interval = TimeSpan.FromMilliseconds(5);
             gameTimer.Tick += GameEngine;
@@ -71,10 +79,12 @@ namespace WpfApp1
             this.player2 = player2;
         }
 
-
+        /// <summary>
+        /// de methode game_KeyDown word aan geroepen als er een keydown is 
+        /// </summary>
         private void game_KeyDown(object sender, KeyEventArgs e)
         {
-            //player1 movment
+            //dit zorgd er voor dat de W A S keys werken voor de playermovment van player1 als de key down is gaat de bool voor de playermovent op true
             if (e.Key == Key.A)
                 moveLeft1 = true;
             if (e.Key == Key.D)
@@ -82,7 +92,7 @@ namespace WpfApp1
             if (e.Key == Key.W)
                 moveUp1 = true;
 
-            //player2 movment
+            //dit zorgd er voor dat de Up Left Right keys werken voor de playermovment van player2 als de key down is gaat de bool voor de playermovent op true
             if (e.Key == Key.Left)
                 moveLeft2 = true;
             if (e.Key == Key.Right)
@@ -90,14 +100,18 @@ namespace WpfApp1
             if (e.Key == Key.Up)
                 moveUp2 = true;
 
+           
             if (e.Key == Key.K)
                 Win();
             if (e.Key == Key.L)
                 Lose();
         }
+        /// <summary>
+        /// de methode game_KeyUp wordt aangeroepen waneer er een keyup is
+        /// </summary>
         private void game_KeyUp(object sender, KeyEventArgs e)
         {
-            //player1 movment
+            // dit zorgd er voor dat als je stopt met de key indrukken dat de player ook stopt met die kan op bewegen 
             if (e.Key == Key.A)
                 moveLeft1 = false;
             if (e.Key == Key.D)
@@ -114,12 +128,16 @@ namespace WpfApp1
                 moveUp2 = false;
         }
 
-
+        /// <summary>
+        /// de methode GameEngine word iedere 5 ms aangeroepen door de gametimer, hier word alles wat beweegt geregeld
+        /// </summary>
         private void GameEngine(object sender, EventArgs e)
         {
+            // berekend de highscore die i nbeeld staat en die je krijgt aan het einde van het spel
             highscore = scoreplayer1 + scoreplayer2 + seconde / 4;
             teller++;
 
+            // heir word de timer die in beeld staat berekend, iedere 200 frams gaat er 1 van seconde af
             if (teller >= 200)
             {
                 seconde = seconde - 1;
@@ -131,6 +149,7 @@ namespace WpfApp1
                 Lose();
             }
 
+            // hier worde moveup1 en meveup2 op fals gezet al de players 40 frames of meer omhoog aan het bewegen waren zonder een platform van de zijkand aan te raken of onderkant zodat je niet oneindig kan jumpen
             if (jumptime1 >= 40)
             {
                 moveUp1 = false;
@@ -140,10 +159,11 @@ namespace WpfApp1
                 moveUp2 = false;
             }
 
+            // hier worden te labels die rechtbove in het gamewinde staan gevuld zodat je de timer en de score kan zien
             score.Content = "Score: " + highscore;
             klok.Content = "Tijd over: " + seconde;
 
-            //player1 movment
+            // in deze if statmens worde de player movent er word hier gekontroleerd of het keys voor movent zijn ingedrukt en of de player niet links of recht uit het scherm beweegt of dat de players niet tegen een opject aan zitten waar ze niet door heen mogen
             if (moveUp1 && Canvas.GetTop(Player1) > 0 && spaceUp1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - playerSpeed);
                 jumptime1++;
@@ -154,7 +174,6 @@ namespace WpfApp1
             if (Gravity1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + GravitySpeed);
 
-            //player2 movment
             if (moveUp2&& Canvas.GetTop(Player2) > 0 && spaceUp2)
                 Canvas.SetTop(Player2, Canvas.GetTop(Player2) - playerSpeed);
                 jumptime2++;
@@ -178,18 +197,21 @@ namespace WpfApp1
 
             knopdown = false;
 
+            // hier krijgt player1hitbox en player2hitbox de waardenm van de zij en boven en onderkant van de player zodat we kunnen kontroleren of ze eregens tegen aan bewegen
             Rect player1HitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
             Rect player2HitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
 
-            //telst frames en zorgd voor timer
+            
             foreach (var x in game.Children.OfType<Rectangle>())
             {
                 if ((string)x.Tag == "platform")
                 {
                     x.Stroke = Brushes.Black;
 
+                    // hier krijgt platformhitbox de waardenm van de zij en boven en onderkant van de platformen zodat we kunnen kontroleren 1 van de players er tegen aan bost
                     Rect platformHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
+                    // deze if statement zorgen er voor dat de players stoppen met bewegen als tegen een platform aan komen
                     if (player1HitBox.IntersectsWith(platformHitBox))
                     {
                         if (Canvas.GetTop(Player1) < (Canvas.GetTop(x) - (Player1.Height - 2)))
@@ -236,6 +258,7 @@ namespace WpfApp1
                         }
                     }
                 }
+                // deze if statement regeld de hetboxen voor de opstakels en zorgd er voor dat als je op een knop gaat staan het opstakel verdwijnd 
                 if ((string)x.Tag == "opstakel")
                 {
                     x.Stroke = Brushes.Black;
@@ -292,6 +315,7 @@ namespace WpfApp1
 
                     }
                 }
+                // in deze if statement word er geregistreerd of er een player op een knop staat
                 if ((string)x.Tag == "knop")
                 {
                     Rect knopHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
@@ -309,6 +333,7 @@ namespace WpfApp1
             }
             foreach (var x in game.Children.OfType<Image>())
             {
+                //deze if statement zorgd er voor dat het spel beeindigd als 1 van de players op een spike staan
                 if ((string)x.Tag == "spike")
                 {
                     Rect spikeHitBox = new Rect((Canvas.GetLeft(x) + 2), (Canvas.GetTop(x) + 13), (x.Width - 4), x.Height);
@@ -321,6 +346,7 @@ namespace WpfApp1
                         Lose();
                     }
                 }
+                //deze if statement zorgd er voor dat de player die op een coin staat een punt krijgt
                 if ((string)x.Tag == "coin")
                 {
                     Rect coinHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
@@ -346,6 +372,7 @@ namespace WpfApp1
                 }
             }
 
+            // hier krijgen de deuren ook een hitbox zodat waneer de players voor de goede deuren staan ze naar het vlgende level gaan
             Rect doorbleuHitBox = new Rect(Canvas.GetLeft(doorbleu), Canvas.GetTop(doorbleu), doorbleu.Width, doorbleu.Height);
             Rect doorredHitBox = new Rect(Canvas.GetLeft(doorred), Canvas.GetTop(doorred), doorred.Width, doorred.Height);
 
@@ -362,8 +389,9 @@ namespace WpfApp1
                 Win();
             }
         }
-
-        /// Zorgt er voor dat je naar het win scherm gaat.Stuurt spelerdata (highscore en namen) mee
+        /// <summary>
+        /// dede methode word aangeroen waneer de player de levels heeft uitgespeeld
+        /// Zorgt er voor dat je naar het volgende level gaat
         /// </summary>
         private void Win()
         {
@@ -374,6 +402,7 @@ namespace WpfApp1
         }
 
         /// <summary>
+        /// dede methode word aangeroen waneer de player op een spike staat of als de timer om is
         /// Zorgt er voor dat je naar het verlies scherm gaat. Stuurt spelerdata mee.
         /// </summary>
         private void Lose()
@@ -389,6 +418,9 @@ namespace WpfApp1
             Application.Current.Shutdown();
         }
 
+        /// <summary>
+        /// methode om de game te restarten 
+        /// </summary>
         private void Restart(object sender, RoutedEventArgs e)
         {
             StartGame startgame = new StartGame();
