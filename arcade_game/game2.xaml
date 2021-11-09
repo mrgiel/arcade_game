@@ -58,23 +58,18 @@
         <Image     Source="/Image/doorred.PNG" 
                    x:Name ="doorred"
                    Tag ="door"
-                   Canvas.Left="21" Canvas.Top="223"
+                   Canvas.Left="50" Canvas.Top="507"
                    Height="83" Width="38" />
         <Rectangle x:Name="knop1"
                    Tag="knop"
                    Fill="Pink"
                    Height="6" Width="50" 
-                   Canvas.Left="617" Canvas.Top="442"/>
+                   Canvas.Left="134" Canvas.Top="583"/>
         <Rectangle x:Name="knop3"
                    Tag="knop"
                    Fill="Pink"
                    Height="6" Width="50" 
                    Canvas.Left="405" Canvas.Top="583"/>
-        <Rectangle x:Name="knop2"
-                   Tag="knop"
-                   Fill="Pink"
-                   Height="6" Width="50" 
-                   Canvas.Left="289" Canvas.Top="299"/>
         <Rectangle x:Name="opstakel1"
                    Tag="opstakel"
                    Fill="Pink"
@@ -112,6 +107,51 @@
         <Rectangle Height="2" Stroke="Black" Canvas.Top="40" Width="815"/>
         <Button Content="Herstart" Canvas.Left="681" Canvas.Top="10" Click="Restart"/>
         <Button Content="Stoppen" Canvas.Left="745" Canvas.Top="10" Click="Main"/>
+        <Image     Tag="coin" 
+            Height="25" Canvas.Left="779" Stretch="Fill" 
+            Source="/Image/pngwing.com.png" 
+            Canvas.Top="419" Width="25"/>
+        <Image     Tag="coin" 
+            Height="25" Canvas.Left="779" Stretch="Fill" 
+            Source="/Image/pngwing.com.png" 
+            Canvas.Top="419" Width="25"/>
+        <Image     Tag="coin" 
+            Height="25" Canvas.Left="744" Stretch="Fill" 
+            Source="/Image/pngwing.com.png" 
+            Canvas.Top="419" Width="25"/>
+        <Image     Tag="coin" 
+            Height="25" Canvas.Left="715" Stretch="Fill" 
+            Source="/Image/pngwing.com.png" 
+            Canvas.Top="419" Width="25"/>
+        <Image     Tag="coin" 
+            Height="25" Canvas.Left="779" Stretch="Fill" 
+            Source="/Image/pngwing.com.png" 
+            Canvas.Top="389" Width="25"/>
+        <Image     Tag="coin" 
+            Height="25" Canvas.Left="744" Stretch="Fill" 
+            Source="/Image/pngwing.com.png" 
+            Canvas.Top="389" Width="25"/>
+        <Image     Tag="coin" 
+            Height="25" Canvas.Left="715" Stretch="Fill" 
+            Source="/Image/pngwing.com.png" 
+            Canvas.Top="389" Width="25"/>
+        <Image     Tag="coin" 
+            Height="25" Canvas.Left="38" Stretch="Fill" 
+            Source="/Image/pngwing.com.png" 
+            Canvas.Top="275" Width="24"/>
+        <Image     Tag="coin" 
+            Height="25" Canvas.Left="67" Stretch="Fill" 
+            Source="/Image/pngwing.com.png" 
+            Canvas.Top="275" Width="25"/>
+        <Image     Tag="coin" 
+            Height="25" Canvas.Left="97" Stretch="Fill" 
+            Source="/Image/pngwing.com.png" 
+            Canvas.Top="275" Width="25"/>
+        <Image     Source="/Image/spikes.PNG" 
+            x:Name="spike2_Copy" 
+            Tag ="spike" 
+            Canvas.Left="180" Canvas.Top="280" 
+            Height="25" Width="30" />
 
     </Canvas>
 </Window>

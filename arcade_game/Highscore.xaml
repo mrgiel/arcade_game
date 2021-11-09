@@ -43,6 +43,6 @@
             </Button.Background>
         </Button>
         <Label Content="Speler 2" Grid.Column="1" HorizontalAlignment="Left" Margin="470,34,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Impact" FontWeight="Bold" FontSize="24"/>
-        <StackPanel x:Name="HighScorePanel" Background="Pink" Grid.Column="1" Margin="176,105,76,17" Grid.ColumnSpan="2"/>
+        <StackPanel x:Name="HighScorePanel" Grid.Column="1" Margin="134,105,76,17" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

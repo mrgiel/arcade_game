@@ -11,7 +11,7 @@
             <ImageBrush ImageSource="/Image/istockphoto-1182467404-170667a.jpg"/>
         </Grid.Background>
         <Label HorizontalContentAlignment="Left">
-            <Label Content="Arcade 2.0" Width="790" Height="166" FontSize="100" FontFamily="Impact" FontWeight="Bold" FontStyle="Normal" Foreground="White" FontStretch="Normal" BorderThickness="0,0,0,0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" RenderTransformOrigin="0.5,0.5"/>
+            <Label Content="Arcade 2.0" Width="790" Height="166" FontSize="90" FontFamily="Impact" FontWeight="Bold" FontStyle="Normal" Foreground="White" FontStretch="Normal" BorderThickness="0,0,0,0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" RenderTransformOrigin="0.5,0.5"/>
         </Label>
         <Grid>
             <Grid Margin="178,0,178,0">
@@ -19,7 +19,7 @@
                     <Button Content="Game Spelen" Click="StartGame" Margin="38,138,38,202" Background="{x:Null}" FontFamily="Impact" FontSize="36" FontWeight="Bold" Foreground="White" BorderBrush="White" BorderThickness="3,2,3,2"/>
                 </Border>
             </Grid>
-            <Button Content="High score" HorizontalAlignment="Center" Margin="0,229,0,0" VerticalAlignment="Top" Height="63" Width="358" Background="{x:Null}" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold" BorderBrush="White" BorderThickness="3,2,3,2" Click="Highscore"/>
+            <Button Content="Highscore" HorizontalAlignment="Center" Margin="0,229,0,0" VerticalAlignment="Top" Height="63" Width="358" Background="{x:Null}" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold" BorderBrush="White" BorderThickness="3,2,3,2" Click="Highscore"/>
             <Button Content="Opties" HorizontalAlignment="Left" Margin="221,325,0,0" VerticalAlignment="Top" Height="76" Width="165" IsCancel="True" Background="{x:Null}" BorderBrush="White" BorderThickness="3,2,3,2" FontFamily="Impact" FontSize="36" FontWeight="Bold" Foreground="White" Click="Opties"/>
             <Button Content="Stoppen" HorizontalAlignment="Left" Margin="414,325,0,0" VerticalAlignment="Top" Height="76" Width="165" Click="QuitGame" Background="{x:Null}" BorderThickness="3,2,3,2" BorderBrush="White" Foreground="White" FontFamily="Impact" FontSize="36" FontWeight="Bold"/>
             <Border BorderThickness="5,5,5,5" BorderBrush="White" Margin="10,10,647,10"/>
