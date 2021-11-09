@@ -40,6 +40,7 @@ namespace arcade_game
             player1 = speler1.Text;
             player2 = speler2.Text;
 
+            //checkt of alle textboxen (teamname, player1 en player2) zijn ingevuld. Zo niet komt er een messagebox.
             if (string.IsNullOrEmpty(teamname) || string.IsNullOrEmpty(player1) || string.IsNullOrEmpty(player2))
             {
                 MessageBox.Show("Vul alle velden in!");

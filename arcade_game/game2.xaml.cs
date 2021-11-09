@@ -24,7 +24,7 @@ namespace arcade_game
     /// </summary>
     public partial class Game2 : Window
     {
-        // variabele die al een waarde hebben en mee moetne worden gegeven naar andere windows
+        // variabele die al een waarde hebben en mee moeten worden gegeven naar andere windows
         public string teamname { get; set; }
         public string player1 { get; set; }
         public string player2 { get; set; }
@@ -33,7 +33,7 @@ namespace arcade_game
         public int scoreplayer1 { get; set; }
         public int scoreplayer2 { get; set; }
 
-        // variabele voor playermovment
+        // variabele voor playermovement
         private bool moveUp2, moveLeft2, moveRight2;
         private bool moveUp1, moveLeft1, moveRight1;
 
@@ -65,7 +65,7 @@ namespace arcade_game
         /// </summary>
         public Game2(int highscore, string teamname, string player1, string player2, int seconde, int scoreplayer1, int scoreplayer2)
         {
-            // gametimer zorgd er voor da gameangine idere 5 ms word aan geroepen
+            // gametimer zorgt er voor da gameangine idere 5 ms word aan geroepen
             InitializeComponent();
             gameTimer.Interval = TimeSpan.FromMilliseconds(5);
             gameTimer.Tick += GameEngine;
@@ -86,7 +86,7 @@ namespace arcade_game
         /// </summary>
         private void game2_KeyDown(object sender, KeyEventArgs e)
         {
-            //dit zorgd er voor dat de W A S keys werken voor de playermovment van player1 als de key down is 
+            //dit zorgt er voor dat de W A S keys werken voor de playermovment van player1 als de key down is 
             if (e.Key == Key.A)
                 moveLeft1 = true;
             if (e.Key == Key.D)
@@ -94,7 +94,7 @@ namespace arcade_game
             if (e.Key == Key.W)
                 moveUp1 = true;
 
-            //dit zorgd er voor dat de Up Left Right keys werken voor de playermovment van player2 als de key down is 
+            //dit zorgt er voor dat de Up Left Right keys werken voor de playermovment van player2 als de key down is 
             if (e.Key == Key.Left)
                 moveLeft2 = true;
             if (e.Key == Key.Right)
@@ -114,7 +114,7 @@ namespace arcade_game
         /// </summary>
         private void game2_KeyUp(object sender, KeyEventArgs e)
         {
-            // dit zorgd er voor dat als je stopt met de key indrukken dat de player ook stopt met die kan op bewegen 
+            // dit zorgt er voor dat als je stopt met de key indrukken dat de player ook stopt met die kan op bewegen 
             if (e.Key == Key.A)
                 moveLeft1 = false;
             if (e.Key == Key.D)
@@ -135,11 +135,11 @@ namespace arcade_game
         /// </summary>
         private void GameEngine(object sender, EventArgs e)
         {
-            // berekend de highscore die i nbeeld staat en die je krijgt aan het einde van het spel
+            // berekend de highscore die in beeld staat en die je krijgt aan het einde van het spel
             highscore = scoreplayer1 + scoreplayer2 + seconde / 4;
             teller++;
 
-            // heir word de timer die in beeld staat berekend, iedere 200 frams gaat er 1 van seconde af
+            // heir word de timer die in beeld staat berekend, iedere 200 frames gaat er 1 van seconde af
             if (teller >= 200)
             {
                 seconde = seconde - 1;
@@ -152,7 +152,7 @@ namespace arcade_game
                 Lose();
             }
 
-            // hier worde moveup1 en meveup2 op fals gezet al de players 40 frames of meer omhoog aan het bewegen waren zonder een platform van de zijkand aan te raken of onderkant zodat je niet oneindig kan jumpen
+            // hier worden moveup1 en moveup2 op false gezet al de players 40 frames of meer omhoog aan het bewegen waren zonder een platform van de zijkant aan te raken of onderkant zodat je niet oneindig kan jumpen
             if (jumptime1 >= 40)
             {
                 moveUp1 = false;
@@ -162,11 +162,11 @@ namespace arcade_game
                 moveUp2 = false;
             }
 
-            // hier worden te labels die rechtbove in het gamewinde staan gevuld zodat je de timer en de score kan zien
+            // hier worden de labels die rechtboven in het gamewindow staan gevuld zodat je de timer en de score kan zien
             score.Content = "Score: " + highscore;
             klok.Content = "Tijd over: " + seconde;
 
-            // in deze if statmens worde de player movent er word hier gekontroleerd of het keys voor movent zijn ingedrukt en of de player niet links of recht uit het scherm beweegt of dat de players niet tegen een opject aan zitten waar ze niet door heen mogen
+            // in deze if statemens worden de player movement en word hier gecontroleerd of het keys voor movement zijn ingedrukt en of de player niet links of recht uit het scherm beweegt of dat de players niet tegen een opject aan zitten waar ze niet door heen mogen
             if (moveUp1 && Canvas.GetTop(Player1) > 0 && spaceUp1)
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - playerSpeed);
                 jumptime1++;
